@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/Container.module.scss';
+import Favorites from './Favorites/Favorites';
 import Header from './Header/Header';
-import Main from './Main/Main';
+import Search from './Search/Search';
 
 const Container = () => {
+	const [isSearchPage, setIsSearchPage] = useState(false);
+
 	return (
 		<div
 			className={styles.container}
 		>
-			<Header/>
-			<Main/>
+			<Header />
+			{
+				isSearchPage && <Search />
+			}
+			{
+				!isSearchPage && <Favorites />
+			}
 		</div>
 	);
 };

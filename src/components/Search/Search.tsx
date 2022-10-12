@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/Main.module.scss';
+import styles from '../../styles/Search.module.scss';
 
 const Main = () => {
 	return (
@@ -19,6 +19,7 @@ const Main = () => {
 					className={styles.main__form_input}
 					placeholder={'   Что хотите посмотреть?'}
 					type={'text'}
+					
 				/>
 				<label
 					className={styles.main__form_label}
