@@ -25,8 +25,7 @@ const AuthPage = () => {
 					className={styles.auth__form_passwordInput} type="password"
 				/>
 				<button
-					className={styles.auth__form_btn}
-					type='submit'
+					className={styles.auth__form_btn} type='submit'
 				>
 					Войти
 				</button>
