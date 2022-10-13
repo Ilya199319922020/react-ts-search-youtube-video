@@ -1,0 +1,140 @@
+%tstyle {
+	height: 22px;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 22px;
+	vertical-align: middle;
+}
+
+%sinput {
+	background: #FAFAFA;
+	border: 1px solid rgba(23, 23, 25, 0.1);
+	border-radius: 10px;
+	width: 430px;
+	height: 48px;
+	margin-bottom: 36px;
+}
+
+%stbtn {
+	border: 1px solid #1390E5;
+	border-radius: 10px;
+	width: 210px;
+	height: 52px;
+	color: #1390E5;
+	background: #FFFFFF;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 24px;
+	text-align: center;
+}
+
+%ta {
+	text-align: left;
+}
+
+
+.background {
+	background: #75C7FF;
+	opacity: 0.8;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+
+.modal {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background: #FFFFFF;
+	box-shadow: 0px 10px 50px rgba(19, 144, 229, 0.8);
+	border-radius: 10px;
+	height: 573px;
+	width: 510px;
+
+	.modal__block {
+		text-align: center;
+		padding: 36px 40px 36px 40px;
+
+		.modal__block_title {
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 28px;
+			margin-bottom: 36px;
+			height: 36px;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		.modal__block_formTextRequest {
+			@extend %tstyle;
+			@extend %ta;
+		}
+
+		.modal__block_formInputRequest {
+			@extend %sinput;
+		}
+
+		.modal__block_formTextName {
+			@extend %tstyle;
+			@extend %ta;
+		}
+
+		.modal__block_formInputName {
+			@extend %sinput;
+		}
+
+		.modal__block_formTextSort {
+			@extend %tstyle;
+			@extend %ta;
+		}
+
+		.modal__block_formInputSort {
+			@extend %sinput;
+		}
+
+		.modal__block_formRatingBlock {
+			display: flex;
+			align-items: center;
+
+			.modal__block_formRatingInput {
+				height: 6px;
+				width: 310px;
+				background: rgba(23, 23, 25, 0.3);
+				border-radius: 3px;
+				display: flex;
+				margin-right: 20px;
+			}
+
+			.modal__block_formRatingCount {
+				height: 48px;
+				width: 100px;
+				border: 1px solid rgba(23, 23, 25, 0.2);
+				border-radius: 10px;
+				font-weight: 400;
+				font-size: 20px;
+				line-height: 24px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+
+		.modal__block_formBtn {
+			margin-top: 36px;
+
+			.modal__block_formBtnNoSave {
+				@extend %stbtn;
+			}
+
+			.modal__block_formBtnSave {
+				@extend %stbtn;
+				background-color: #1390E5;
+				color: #FFFFFF;
+				margin-left: 10px;
+			}
+		}
+	}
+}
