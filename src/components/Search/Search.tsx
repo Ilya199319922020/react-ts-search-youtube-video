@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { IVideoCard } from '../../models/VideoCard';
+import { useAppDispatch } from '../../hooks/redux';
 import { fetchListVideo } from '../../store/reducers/ActionCreatotrs';
 import styles from '../../styles/Search.module.scss';
+import { SearchProps } from '../../TypeProps/TypeProps';
 
-const Search = () => {
+const Search: React.FC<SearchProps> = ({ searchField, setSeachField }) => {
 	const dispatch = useAppDispatch();
-	const { videoList } = useAppSelector(state => state.videoSlice)
-	const [searchField, setSeachField] = useState('');
 	const [isReq, setIsReq] = useState(false);
-	const [videoStateList, setVideoStateList] = useState();
 
 	const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
 		const { value } = e.target;
-		setSeachField(value)
+		setSeachField(value);
 	};
 	const handleSubmitSearch = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
@@ -27,7 +24,7 @@ const Search = () => {
 			setIsReq(false);
 		}
 	}, [isReq]);
-	
+
 	return (
 		<main
 			className={styles.main}

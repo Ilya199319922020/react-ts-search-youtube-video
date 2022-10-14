@@ -11,7 +11,6 @@ function App() {
       <Route path="/" element={<Navigate replace to="/login" />} />
       <Route path='/login' element={<AuthPage />} />
       <Route path='/search' element={<Container />} />
-      <Route path='/videoList' element={<VideoList />} />
     </Routes>
   );
 }

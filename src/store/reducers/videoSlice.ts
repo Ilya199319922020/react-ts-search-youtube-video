@@ -20,7 +20,8 @@ export const videoSlice = createSlice({
 		[fetchListVideo.fulfilled.type]: (state, action: PayloadAction<IVideoCard[]>) => {
 			state.videoList = action.payload;
 			state.error = ''
-		}
+		},
+
 	},
 });
 
