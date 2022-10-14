@@ -4,7 +4,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import AuthPage from './components/AuthPage';
 import Container from './components/Container';
 import VideoList from './components/Video/VideoList';
-import Favorites from './components/Favorites/Favorites';
 
 function App() {
   return (

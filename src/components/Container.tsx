@@ -21,7 +21,7 @@ const Container = () => {
 				!isSearchPage && <Favorites />
 			}
 			{
-			isSearchPage && <VideoList/>
+			// isSearchPage && <VideoList/>
 			}
 
 			{/* <ModalVideo/> */}

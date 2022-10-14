@@ -1,25 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "../../models/User";
 
-interface AuthState  {
+interface AuthState {
 	user: IUser[];
 	isAuth: boolean;
-	isLoading: boolean;
-	error: string;
+		error: string;
 };
 
 const initialState: AuthState = {
 	user: [],
 	isAuth: false,
-	isLoading: false,
 	error: '',
 };
 
-export const authSlice = createSlice ({
+export const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-  
+		authSuccess(state) {
+			state.isAuth = true;
+		},
+		authFetchingError(state, action: PayloadAction<string>) {
+			state.isAuth = false;
+			state.error = action.payload;
+		},
 	}
 });
 
