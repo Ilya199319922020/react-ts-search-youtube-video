@@ -1,0 +1,126 @@
+%styletext {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 28px;
+	line-height: 40px;
+	color: #000000;
+}
+
+%texthide {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+
+$wb: 245px;
+$hb: 32px;
+
+.main {
+	margin-top: 80px;
+	display: flex;
+	flex-direction: column;
+	padding: 40px 200px 40px 200px;
+
+	.main__title {
+		text-align: start;
+		height: 40px;
+		margin-bottom: 12px;
+		@extend %styletext;
+	}
+
+	.main__form {
+
+		.main__form_input {
+			height: 52px;
+			width: 890px;
+			border-top: 1px solid rgba(39, 39, 39, 0.3);
+			border-left: 1px solid rgba(39, 39, 39, 0.3);
+			border-bottom: 1px solid rgba(39, 39, 39, 0.3);
+			border-radius: 10px 0 0 10px;
+		}
+
+		.main__form_inputFocus {
+			height: 52px;
+			width: 536px;
+			border-top: 1px solid #1390E5;
+			border-left: 1px solid #1390E5;
+			border-bottom: 1px solid #1390E5;
+			border-radius: 10px 0 0 10px;
+		}
+
+		.main__form_inputActive {
+			height: 52px;
+			width: 1040px;
+			border-top: 1px solid #1390E5;
+			border-left: 1px solid #1390E5;
+			border-bottom: 1px solid #1390E5;
+			border-radius: 10px 0 0 10px;
+		}
+
+		.main__form_label button {
+			border-radius: 0px 10px 10px 0px;
+			background-color: #1390E5;
+			height: 52px;
+			width: 150px;
+			color: #FFFFFF;
+		}
+	}
+}
+
+.video {
+	padding: 0px 200px 28px 200px;
+
+	.video__title {
+		display: flex;
+		justify-content: space-between;
+
+		.video__title_header {
+			height: 24px;
+			font-size: 16px;
+			line-height: 24px;
+			display: flex;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+
+		.video__title_icon button:nth-child(1) {
+			margin-right: 20px;
+		}
+	}
+
+	.video__list {
+		display: grid;
+		grid-auto-rows: 218px;
+		grid-template: 1fr / repeat(4, 245px);
+		align-items: flex-start;
+		justify-content: space-between;
+		grid-row-gap: 28px;
+		.videoCard {
+			display: flex;
+			flex-direction: column;
+			height: 218px;
+			
+			.videoCard__title {
+				font-weight: 500;
+				font-size: 14px;
+				line-height: 16px;
+				width: $wb;
+				margin-bottom: 8px;
+				margin-top: 8.3px;
+				@extend %texthide;
+			}
+
+			.videoCard__description {
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 16px;
+				width: $wb;
+				color: rgba(23, 23, 25, 0.3);
+				@extend %texthide;
+				
+			}
+		}
+	}
+}

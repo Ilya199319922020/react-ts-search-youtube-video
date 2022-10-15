@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { SearchForm } from '../../assets/AuxiliaryComponent/SearchForm';
 import { useAppDispatch } from '../../hooks/redux';
 import { fetchListVideo } from '../../store/reducers/ActionCreatotrs';
-import styles from '../../styles/Search.module.scss';
+// import styles from '../../styles/Search.module.scss';
+import styles from '../../styles/VideoList.module.scss';
 import { SearchProps } from '../../TypeProps/TypeProps';
 
-const Search: React.FC<SearchProps> = ({ searchField, setSeachField }) => {
+const Search: React.FC<SearchProps> = ({ searchField, setSeachField, videoList }) => {
 	const dispatch = useAppDispatch();
 	const [isReq, setIsReq] = useState(false);
 
@@ -30,30 +32,17 @@ const Search: React.FC<SearchProps> = ({ searchField, setSeachField }) => {
 			className={styles.main}
 		>
 			<h2
-				className={styles.main__header}
+				className={styles.main__title}
 			>
 				Поиск видео
 			</h2>
-			<form
-				className={styles.main__form}
+			<SearchForm
+				searchField={searchField}
+				handleChangeSearch={handleChangeSearch}
+				handleSubmitSearch={handleSubmitSearch}
 			>
-				<input
-					className={styles.main__form_input}
-					placeholder={'   Что хотите посмотреть?'}
-					type={'text'}
-					value={searchField}
-					onChange={handleChangeSearch}
-				/>
-				<label
-					className={styles.main__form_label}
-				>
-					<button
-						onClick={handleSubmitSearch}
-					>
-						Найти
-					</button>
-				</label>
-			</form>
+				Найти
+			</SearchForm>
 		</main>
 	);
 };

@@ -19,10 +19,10 @@ export const setAuth = (error?: any) => async (dispatch: AppDispatch) => {
 
 export const fetchListVideo = createAsyncThunk(
 	'search/video',
-	async (name: string, thunkApi) => {
+	async (name: string,  thunkApi) => {
 		try {
 			const response = await axios
-				.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAV9a9kZtwKibDxbD1xV0CkiDawpzYY8ww&q=${name}`);
+				.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAV9a9kZtwKibDxbD1xV0CkiDawpzYY8ww&maxResults=${12}&q=${name}`);
 			const { items } = response.data;
 			return items;
 		} catch (e) {

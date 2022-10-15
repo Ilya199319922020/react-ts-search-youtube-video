@@ -1,12 +1,12 @@
 import React from 'react';
-import style from '../../styles/Video.module.scss';
+import style from '../../styles/VideoList.module.scss';
 import listIcon from '../../assets/icon/list.png';
 import gridIcon from '../../assets/icon/grid.png';
 import VideoCardPage from './VideoCardPage';
 import { VideoListProps } from '../../TypeProps/TypeProps';
 
-const VideoList: React.FC<VideoListProps> = ({ videoList,  searchField}) => {
-    return (
+const VideoList: React.FC<VideoListProps> = ({ videoList, searchField }) => {
+  return (
     <div
       className={style.video}
     >
@@ -29,13 +29,17 @@ const VideoList: React.FC<VideoListProps> = ({ videoList,  searchField}) => {
           </button>
         </div>
       </div>
-      {
-        videoList.map((s: any) => <VideoCardPage
-          key={s.etag}
-          snippet={s.snippet}
-        />
-        )
-      }
+      <div
+        className={style.video__list}
+      >
+        {
+          videoList.map((s: any) => <VideoCardPage
+            key={s.etag}
+            snippet={s.snippet}
+          />
+          )
+        }
+      </div>
     </div>
   );
 };

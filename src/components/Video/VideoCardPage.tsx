@@ -1,22 +1,31 @@
 import React from 'react';
 import listIcon from '../../assets/icon/list.png';
+import style from '../../styles/VideoList.module.scss';
 import { IVideoCard } from '../../models/VideoCard';
 
 const VideoCardPage: React.FC<IVideoCard> = ({ snippet }) => {
   return (
-    <div>
+    <div
+    className={style.videoCard}
+    >
       <img
+      className={style.videoCard__item}
         src={
           snippet.thumbnails?.default?.url
         }
-        width={'157px'}
+        height={'137.7px'}
+        width={'245px'}
       />
-      <p>
+      <p
+      className={style.videoCard__title}
+      >
         {
           snippet.title
         }
       </p>
-      <p>{
+      <p
+      className={style.videoCard__description}
+      >{
         snippet.description
       }</p>
     </div>

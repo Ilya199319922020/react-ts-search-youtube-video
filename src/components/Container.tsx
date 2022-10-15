@@ -17,16 +17,19 @@ const Container = () => {
 		>
 			<Header />
 			{
-				isSearchPage && <Search
+				isSearchPage 
+				&& 
+				<Search
 					searchField={searchField}
 					setSeachField={setSeachField}
+					videoList={videoList}
 				/>
 			}
 			{
 				!isSearchPage && <Favorites />
 			}
 			{
-				videoList.length
+				videoList.length > 0
 				&& <VideoList
 					videoList={videoList}
 					searchField={searchField}
