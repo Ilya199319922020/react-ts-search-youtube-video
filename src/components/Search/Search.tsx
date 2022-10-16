@@ -60,6 +60,7 @@ const Search: React.FC<SearchProps> = ({ searchField, setSeachField, videoList }
 				isModal &&
 				<ModalVideo>
 					<ModalForm
+					videoList={videoList}
 					valueField={searchField}
 						{...valuePropsModalForm}
 					/>

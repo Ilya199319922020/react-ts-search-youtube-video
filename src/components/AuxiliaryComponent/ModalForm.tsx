@@ -1,25 +1,43 @@
-import React, { useState } from 'react';
-import { IFormValue } from '../../models/FormValue';
+import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { IFavorites } from '../../models/Favorites';
+import { addReqValueFavorites, openCloseModal } from '../../store/reducers/ActionCreatotrs';
 import styles from '../../styles/Modal.module.scss';
 import { ModalFormProps } from '../../TypeProps/TypeProps';
 
 const ModalForm: React.FC<ModalFormProps> = ({
 	headerName, title, req, valueField,
-	sortName, value, noBtnName, btnName,
+	 noBtnName, btnName,
+	
 }) => {
-	const [formState, setFormState] = useState<IFormValue>({
+	const dispatch = useAppDispatch();
+	const [formState, setFormState] = useState<IFavorites>({
 		valueReq: valueField,
 		valueName: '',
-		valueSort: '',
-		valueRange: 12,
+		maxAmount: 12,
 	});
 
 	const handleChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
-		const { name, value } = e.target;
-		setFormState(prevState => ({ ...prevState, [name]: value }))
+		const { name, value, } = e.target;
+		setFormState(prevState => ({
+			...prevState, [name]: value
+		}))
 	};
 
+	const closeModal = (e: React.MouseEvent<HTMLElement>) => {
+		e.preventDefault();
+		dispatch(openCloseModal(false));
+	}
+
+	const handleSubmitForm = (e: React.MouseEvent<HTMLElement>) => {
+		e.preventDefault();
+		if (formState.valueName) {
+			dispatch(addReqValueFavorites(formState));
+			closeModal(e);
+		}
+	};
+	
 	return (
 		<>
 			<h4
@@ -59,31 +77,30 @@ const ModalForm: React.FC<ModalFormProps> = ({
 				<div
 					className={styles.modal__block_formTextSort}
 				>
-					{sortName}
 				</div>
 				<input
 					className={styles.modal__block_formInputSort}
+					placeholder={'Не выбрано'}
 					type={'text'}
-					name={'valueSort'}
-					value={formState.valueSort}
-					onChange={handleChangeForm}
+					disabled={true}
 				/>
 				<div
-					className={styles.modal__block_formRatingBlock}            >
+					className={styles.modal__block_formRatingBlock}
+				>
 					<input
 						className={styles.modal__block_formRatingInput}
 						type="range"
-						name={'valueRange'}
+						name={'maxAmount'}
 						min={1}
 						max={50}
-						value={formState.valueRange}
+						value={formState.maxAmount}
 						onChange={handleChangeForm}
 					/>
 
 					<div
 						className={styles.modal__block_formRatingCount}
 					>
-						{formState.valueRange}
+						{formState.maxAmount}
 					</div>
 				</div>
 
@@ -93,12 +110,14 @@ const ModalForm: React.FC<ModalFormProps> = ({
 					<button
 						className={styles.modal__block_formBtnNoSave}
 						type='submit'
+						onClick={closeModal}
 					>
 						{noBtnName}
 					</button>
 					<button
 						className={styles.modal__block_formBtnSave}
 						type='submit'
+						onClick={handleSubmitForm}
 					>
 						{btnName}
 					</button>
@@ -109,3 +128,5 @@ const ModalForm: React.FC<ModalFormProps> = ({
 };
 
 export default ModalForm;
+
+

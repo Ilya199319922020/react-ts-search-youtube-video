@@ -11,6 +11,7 @@ const Container = () => {
 	const [isSearchPage, setIsSearchPage] = useState(true);
 	const { videoList } = useAppSelector(state => state.videoSlice);
 	const [searchField, setSeachField] = useState('');
+	console.log(videoList)
 	return (
 		<div
 			className={styles.container}

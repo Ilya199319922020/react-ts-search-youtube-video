@@ -32,12 +32,11 @@ export interface ModalVideoProps {
 }
 
 export interface ModalFormProps {
-	valueField:string;
+	valueField: string;
 	headerName: string;
 	title: string;
 	req: string;
-	sortName: string;
-	value: number;
 	noBtnName: string;
 	btnName: string;
+	videoList: IVideoCard[];
 }
