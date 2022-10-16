@@ -15,7 +15,10 @@ const Container = () => {
 		<div
 			className={styles.container}
 		>
-			<Header />
+			<Header 
+			setIsSearchPage={setIsSearchPage}
+			isSearchPage={isSearchPage}
+			/>
 			{
 				isSearchPage 
 				&& 
@@ -30,14 +33,15 @@ const Container = () => {
 			}
 			{
 				videoList.length > 0
-				&& <VideoList
+				&& 
+				isSearchPage
+				&&
+				<VideoList
 					videoList={videoList}
 					searchField={searchField}
 				/>
 			}
-
-			{/* <ModalVideo/> */}
-		</div>
+					</div>
 	);
 };
 

@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import authReducer from './reducers/authSlice';
 import videoSlice from './reducers/videoSlice';
+import favoritesSlice from './reducers/favoritesSlice';
 
 const rootReducer = combineReducers({
 authReducer,
-videoSlice
+videoSlice,
+favoritesSlice
 });
 
 export const setupStore = () => {

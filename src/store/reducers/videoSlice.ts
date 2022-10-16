@@ -4,9 +4,10 @@ import { IVideoCard } from '../../models/VideoCard';
 import { fetchListVideo } from './ActionCreatotrs';
 
 interface VideoList {
-	videoList: IVideoCard[],
-	error: string,
+	videoList: IVideoCard[];
+	error: string;
 }
+
 const initialState: VideoList = {
 	videoList: [],
 	error: '',
@@ -15,13 +16,13 @@ const initialState: VideoList = {
 export const videoSlice = createSlice({
 	name: 'video',
 	initialState,
-	reducers: {},
+	reducers: {
+	},
 	extraReducers: {
 		[fetchListVideo.fulfilled.type]: (state, action: PayloadAction<IVideoCard[]>) => {
 			state.videoList = action.payload;
 			state.error = ''
 		},
-
 	},
 });
 

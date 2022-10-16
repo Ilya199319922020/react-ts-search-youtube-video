@@ -12,7 +12,9 @@ import { Navigate } from 'react-router-dom';
 const AuthPage = () => {
 	const dispatch = useAppDispatch();
 	const { isAuth, error } = useAppSelector(state => state.authReducer);
-	const [loginPayload, setLoginPayload] = useState<IUser>({ login: '', password: '' });
+	const [loginPayload, setLoginPayload] = useState<IUser>({
+		login: '', password: ''
+	});
 	const [isSubmit, setIsSubmit] = useState(false);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +41,7 @@ const AuthPage = () => {
 			}
 		}
 	}, [isSubmit]);
-	
+
 	const token = localStorage.getItem("token");
 	if (token && isAuth) {
 		return <Navigate to='/search' />

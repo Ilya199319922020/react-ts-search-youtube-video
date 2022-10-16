@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from '../../../styles/Modal.module.scss';
+import { ModalVideoProps } from '../../../TypeProps/TypeProps';
 
-const ModalVideo = () => {
+const ModalVideo: React.FC<ModalVideoProps> = ({ children }) => {
   return (
     <>
       <div
@@ -13,7 +14,8 @@ const ModalVideo = () => {
         <div
           className={styles.modal__block}
         >
-          <h4
+          
+          {/* <h4
             className={styles.modal__block_title}
           >
             Сохранить запрос
@@ -81,7 +83,8 @@ const ModalVideo = () => {
                 Сохранить
               </button>
             </div>
-          </form>
+          </form> */}
+          {children}
         </div>
       </div>
     </>

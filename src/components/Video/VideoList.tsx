@@ -16,7 +16,12 @@ const VideoList: React.FC<VideoListProps> = ({ videoList, searchField }) => {
         <h4
           className={style.video__title_header}
         >
-          Видео по запросу "{searchField}"
+          {
+            searchField
+            &&
+            <span>
+              Видео по запросу <q>{searchField}</q>
+            </span>}
         </h4>
         <div
           className={style.video__title_icon}
