@@ -5,7 +5,6 @@ import { IVideoCard } from "../models/VideoCard";
 export interface SearchProps {
 	searchField: string;
 	setSeachField: (e: string) => void;
-	videoList: IVideoCard[];
 }
 
 export interface VideoListProps {

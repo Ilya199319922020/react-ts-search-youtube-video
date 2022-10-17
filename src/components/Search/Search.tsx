@@ -4,13 +4,14 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchListVideo, addReqValueFavorites, openCloseModal } from '../../store/reducers/ActionCreatotrs';
 import styles from '../../styles/Search.module.scss';
 import stylesList from '../../styles/VideoList.module.scss';
-import { SearchProps } from '../../TypeProps/TypeProps';
 import ModalVideo from '../Video/ModalVideo/ModalVideo';
 import ModalForm from '../AuxiliaryComponent/ModalForm';
 import { valuePropsModalForm } from '../../assets/valueProps/valueProps';
+import { SearchProps } from '../../TypeProps/TypeProps';
 
-const Search: React.FC<SearchProps> = ({ searchField, setSeachField, videoList }) => {
+const Search: React.FC<SearchProps> = ({ searchField, setSeachField }) => {
 	const dispatch = useAppDispatch();
+	const { videoList } = useAppSelector(state => state.videoSlice);
 	const { isModal } = useAppSelector(state => state.favoritesSlice);
 	const [isReq, setIsReq] = useState(false);
 
@@ -31,7 +32,7 @@ const Search: React.FC<SearchProps> = ({ searchField, setSeachField, videoList }
 
 	useEffect(() => {
 		if (isReq && searchField) {
-			dispatch(fetchListVideo(searchField));
+			dispatch(fetchListVideo({ name: searchField }));
 			setIsReq(false);
 		}
 	}, [isReq]);
@@ -60,8 +61,8 @@ const Search: React.FC<SearchProps> = ({ searchField, setSeachField, videoList }
 				isModal &&
 				<ModalVideo>
 					<ModalForm
-					videoList={videoList}
-					valueField={searchField}
+						videoList={videoList}
+						valueField={searchField}
 						{...valuePropsModalForm}
 					/>
 				</ModalVideo>
