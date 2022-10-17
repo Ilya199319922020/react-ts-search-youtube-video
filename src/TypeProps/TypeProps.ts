@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { IFavorites } from "../models/Favorites";
 import { IVideoCard } from "../models/VideoCard";
 
 export interface SearchProps {
@@ -24,7 +25,6 @@ export interface SearchFormProps {
 export interface HeaderProps {
 	isSearchPage: boolean;
 	setIsSearchPage: (a: boolean) => void;
-
 }
 
 export interface ModalVideoProps {
@@ -32,19 +32,20 @@ export interface ModalVideoProps {
 }
 
 export interface ModalFormProps {
-	valueField: string;
+	valueField?: string;
 	headerName: string;
 	title: string;
 	req: string;
 	noBtnName: string;
 	btnName: string;
-	videoList: IVideoCard[];
+	videoList?: IVideoCard[];
+	favorite?:IFavorites | undefined;
 }
 
 export interface FavoritesProp {
-	
+
 }
 
 export interface FavoriteElementProps {
-	valueReq: string;
+	favorite: IFavorites
 }

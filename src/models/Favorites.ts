@@ -1,6 +1,7 @@
 
 export interface IFavorites {
-	valueReq: string;
+	id: number;
+	valueReq: string | undefined;
 	valueName: string;
 	maxAmount: number;
 }

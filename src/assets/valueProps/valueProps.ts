@@ -7,5 +7,15 @@ export const valuePropsModalForm = {
 	sortName: "Сортировать по алфавиту",
 	value: 12,
 	noBtnName: 'Не сохранять',
-	btnName: 'Сохранять',
+	btnName: 'Сохранить',
+}
+
+export const valuePropsModalFormUpdate = {
+	headerName: 'Изменить запрос',
+	req: 'Запрос',
+	title: 'Название',
+	sortName: "Сортировать по алфавиту",
+	value: 12,
+	noBtnName: 'Не изменять',
+	btnName: 'Изменить',
 }

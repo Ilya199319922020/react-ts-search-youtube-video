@@ -24,6 +24,16 @@ export const favoritesSlice = createSlice({
 		openModal(state, action: PayloadAction<boolean>) {
 			state.isModal = action.payload
 		},
+		updateReqValue(state, action: PayloadAction<IFavorites>) {
+
+			state.favorites = [...state.favorites
+				.map(element => {
+					if(element.id = action.payload.id){
+						return action.payload;
+					}
+				return element;
+				})]
+		},
 		favoritesError(state, action: PayloadAction<string>) {
 			state.error = action.payload;
 		},

@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { IFavorites } from '../../models/Favorites';
-import { addReqValueFavorites, openCloseModal } from '../../store/reducers/ActionCreatotrs';
+import { addReqValueFavorites, openCloseModal, updateValueFavorites } from '../../store/reducers/ActionCreatotrs';
 import styles from '../../styles/Modal.module.scss';
 import { ModalFormProps } from '../../TypeProps/TypeProps';
 
 const ModalForm: React.FC<ModalFormProps> = ({
 	headerName, title, req, valueField,
-	noBtnName, btnName,
+	noBtnName, btnName, favorite
 }) => {
 	const { favorites } = useAppSelector(state => state.favoritesSlice)
 	const dispatch = useAppDispatch();
 	const [isActiveSave, setIsActiveSave] = useState(false);
+
+	const currentId = favorites.length > 0
+		?
+		favorites[favorites.length - 1].id + 1
+		:
+		1;
+
 	const [formState, setFormState] = useState<IFavorites>({
+		id: favorite ? favorite.id : currentId,
 		valueReq: valueField,
 		valueName: '',
 		maxAmount: 12,
@@ -38,12 +46,16 @@ const ModalForm: React.FC<ModalFormProps> = ({
 
 	useEffect(() => {
 		if (formState.valueName && isActiveSave) {
-			dispatch(addReqValueFavorites(formState));
+			dispatch(
+				btnName === 'Изменить'
+					? updateValueFavorites(formState)
+					: addReqValueFavorites(formState)
+			);
 			dispatch(openCloseModal(false));
 		}
 	}, [isActiveSave]);
 
-	
+
 	return (
 		<>
 			<h4
@@ -65,7 +77,7 @@ const ModalForm: React.FC<ModalFormProps> = ({
 					name={'valueReq'}
 					value={formState.valueReq}
 					onChange={handleChangeForm}
-					disabled={true}
+					disabled={btnName === 'Изменить' ? false : true}
 				/>
 				<div
 					className={styles.modal__block_formTextName}
@@ -138,5 +150,3 @@ const ModalForm: React.FC<ModalFormProps> = ({
 };
 
 export default ModalForm;
-
-

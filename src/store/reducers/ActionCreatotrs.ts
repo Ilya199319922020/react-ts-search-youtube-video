@@ -31,9 +31,19 @@ export const fetchListVideo = createAsyncThunk(
 	}
 );
 
-export const addReqValueFavorites = (value: IFavorites) => async (dispatch: AppDispatch) => {
+export const addReqValueFavorites = (objReq: IFavorites) => async (dispatch: AppDispatch) => {
 	try {
-		dispatch(favoritesSlice.actions.addReqValue(value))
+		
+		dispatch(favoritesSlice.actions.addReqValue(objReq))
+	}
+	catch (e: any) {
+		dispatch(favoritesSlice.actions.favoritesError(e.message))
+	}
+};
+
+export const updateValueFavorites = (objReq: IFavorites) => async (dispatch: AppDispatch) => {
+	try {
+				dispatch(favoritesSlice.actions.updateReqValue(objReq))
 	}
 	catch (e: any) {
 		dispatch(favoritesSlice.actions.favoritesError(e.message))
