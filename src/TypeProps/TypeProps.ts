@@ -3,8 +3,8 @@ import { IFavorites } from "../models/Favorites";
 import { IVideoCard } from "../models/VideoCard";
 
 export interface SearchProps {
-	searchField: string;
-	setSeachField: (e: string) => void;
+	//searchField: string;
+	//setSeachField: (e: string) => void;
 }
 
 export interface VideoListProps {

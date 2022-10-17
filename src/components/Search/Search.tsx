@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { SearchForm } from '../AuxiliaryComponent/SearchForm';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { fetchListVideo, addReqValueFavorites, openCloseModal } from '../../store/reducers/ActionCreatotrs';
+import { fetchListVideo, addReqValueFavorites, openCloseModal, setValueCearchField } from '../../store/reducers/ActionCreatotrs';
 import styles from '../../styles/Search.module.scss';
 import stylesList from '../../styles/VideoList.module.scss';
 import ModalVideo from '../Video/ModalVideo/ModalVideo';
 import ModalForm from '../AuxiliaryComponent/ModalForm';
 import { valuePropsModalForm } from '../../assets/valueProps/valueProps';
-import { Params, SearchProps } from '../../TypeProps/TypeProps';
+import { SearchProps } from '../../TypeProps/TypeProps';
 import { useSearchParams } from 'react-router-dom';
 
-const Search: React.FC<SearchProps> = ({ searchField, setSeachField }) => {
+const Search: React.FC<SearchProps> = ({ }) => {
 	const dispatch = useAppDispatch();
 	const { videoList } = useAppSelector(state => state.videoSlice);
 	const { isModal } = useAppSelector(state => state.favoritesSlice);
+	const { searchField } = useAppSelector(state => state.favoritesSlice);
 	const [isReq, setIsReq] = useState(false);
 
 	const [searchParams, setSearchParams] = useSearchParams();
-	
+
 	const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
 		const { value } = e.target;
-		setSeachField(value);
+		dispatch(setValueCearchField(value));
 		setSearchParams({ videolist: value, maxResult: '12' })
 	};
 	const handleSubmitSearch = (e: React.MouseEvent<HTMLElement>) => {

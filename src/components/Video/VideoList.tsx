@@ -6,7 +6,7 @@ import VideoCardPage from './VideoCardPage';
 import { VideoListProps } from '../../TypeProps/TypeProps';
 
 const VideoList: React.FC<VideoListProps> = ({ videoList, searchField }) => {
-  
+
   return (
     <div
       className={style.video}

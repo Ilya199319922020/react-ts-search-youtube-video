@@ -10,10 +10,10 @@ export const setAuth = (error?: any) => async (dispatch: AppDispatch) => {
 		if (!error) {
 			dispatch(authSlice.actions.authSuccess())
 		} else {
-			dispatch(authSlice.actions.authFetchingError(error))
+			dispatch(authSlice.actions.authFetchingError(error));
 		}
 	} catch (e: any) {
-		dispatch(authSlice.actions.authFetchingError(e.message))
+		dispatch(authSlice.actions.authFetchingError(e.message));
 	}
 };
 
@@ -34,27 +34,36 @@ export const fetchListVideo = createAsyncThunk(
 
 export const addReqValueFavorites = (objReq: IFavorites) => async (dispatch: AppDispatch) => {
 	try {
-		dispatch(favoritesSlice.actions.addReqValue(objReq))
+		dispatch(favoritesSlice.actions.addReqValue(objReq));
 	}
 	catch (e: any) {
-		dispatch(favoritesSlice.actions.favoritesError(e.message))
+		dispatch(favoritesSlice.actions.favoritesError(e.message));
 	}
 };
 
 export const updateValueFavorites = (objReq: IFavorites) => async (dispatch: AppDispatch) => {
 	try {
-		dispatch(favoritesSlice.actions.updateReqValue(objReq))
+		dispatch(favoritesSlice.actions.updateReqValue(objReq));
 	}
 	catch (e: any) {
-		dispatch(favoritesSlice.actions.favoritesError(e.message))
+		dispatch(favoritesSlice.actions.favoritesError(e.message));
 	}
 };
 
 export const openCloseModal = (isModal: boolean) => async (dispatch: AppDispatch) => {
 	try {
-		dispatch(favoritesSlice.actions.openModal(isModal))
+		dispatch(favoritesSlice.actions.openModal(isModal));
 	}
 	catch (e: any) {
-		dispatch(favoritesSlice.actions.favoritesError(e.message))
+		dispatch(favoritesSlice.actions.favoritesError(e.message));
+	}
+};
+
+export const setValueCearchField = (str: string | any) => async (dispatch: AppDispatch) => {
+	try {
+		dispatch(favoritesSlice.actions.setSeachField(str));
+	}
+	catch (e: any) {
+		dispatch(favoritesSlice.actions.favoritesError(e.message));
 	}
 };

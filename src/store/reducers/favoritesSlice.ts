@@ -6,12 +6,14 @@ interface Favorites {
 	favorites: IFavorites[];
 	error: string;
 	isModal: boolean;
+	searchField: string;
 }
 
 const initialState: Favorites = {
 	favorites: [],
 	error: '',
 	isModal: false,
+	searchField: '',
 };
 
 export const favoritesSlice = createSlice({
@@ -37,6 +39,9 @@ export const favoritesSlice = createSlice({
 		favoritesError(state, action: PayloadAction<string>) {
 			state.error = action.payload;
 		},
+		setSeachField(state, action: PayloadAction<string>){
+			state.searchField = action.payload;
+		}
 	},
 });
 
