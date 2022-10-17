@@ -48,3 +48,8 @@ export interface FavoritesProp {
 export interface FavoriteElementProps {
 	favorite: IFavorites
 }
+
+export interface Params {
+	videolist: string; 
+	maxResult: string | number;
+}

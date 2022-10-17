@@ -1,3 +1,4 @@
+
 export interface IVideoCard {
 	etag?: string,
 	snippet: {

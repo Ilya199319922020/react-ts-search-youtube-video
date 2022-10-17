@@ -7,7 +7,8 @@ import stylesList from '../../styles/VideoList.module.scss';
 import ModalVideo from '../Video/ModalVideo/ModalVideo';
 import ModalForm from '../AuxiliaryComponent/ModalForm';
 import { valuePropsModalForm } from '../../assets/valueProps/valueProps';
-import { SearchProps } from '../../TypeProps/TypeProps';
+import { Params, SearchProps } from '../../TypeProps/TypeProps';
+import { useSearchParams } from 'react-router-dom';
 
 const Search: React.FC<SearchProps> = ({ searchField, setSeachField }) => {
 	const dispatch = useAppDispatch();
@@ -15,10 +16,13 @@ const Search: React.FC<SearchProps> = ({ searchField, setSeachField }) => {
 	const { isModal } = useAppSelector(state => state.favoritesSlice);
 	const [isReq, setIsReq] = useState(false);
 
+	const [searchParams, setSearchParams] = useSearchParams();
+	
 	const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
 		const { value } = e.target;
 		setSeachField(value);
+		setSearchParams({ videolist: value, maxResult: '12' })
 	};
 	const handleSubmitSearch = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();

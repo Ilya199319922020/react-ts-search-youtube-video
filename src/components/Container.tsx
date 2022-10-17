@@ -7,6 +7,7 @@ import VideoList from './Video/VideoList';
 const Container = () => {
 	const [searchField, setSeachField] = useState('');
 	const { videoList } = useAppSelector(state => state.videoSlice);
+	
 	return (
 		<div
 			className={styles.container}

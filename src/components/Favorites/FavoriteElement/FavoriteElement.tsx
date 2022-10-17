@@ -21,7 +21,6 @@ const FavoriteElement: React.FC<FavoriteElementProps> = ({ favorite }) => {
 	const onModalOpen = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
 		dispatch(openCloseModal(!isModal));
-		
 	};
 
 	useEffect(() => {

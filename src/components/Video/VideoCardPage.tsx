@@ -4,6 +4,7 @@ import style from '../../styles/VideoList.module.scss';
 import { IVideoCard } from '../../models/VideoCard';
 
 const VideoCardPage: React.FC<IVideoCard> = ({ snippet }) => {
+  
   return (
     <div
     className={style.videoCard}
