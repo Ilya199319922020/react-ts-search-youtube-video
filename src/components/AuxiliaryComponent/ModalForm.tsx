@@ -7,10 +7,11 @@ import { ModalFormProps } from '../../TypeProps/TypeProps';
 
 const ModalForm: React.FC<ModalFormProps> = ({
 	headerName, title, req, valueField,
-	 noBtnName, btnName,
-	
+	noBtnName, btnName,
 }) => {
+	const { favorites } = useAppSelector(state => state.favoritesSlice)
 	const dispatch = useAppDispatch();
+	const [isActiveSave, setIsActiveSave] = useState(false);
 	const [formState, setFormState] = useState<IFavorites>({
 		valueReq: valueField,
 		valueName: '',
@@ -32,11 +33,16 @@ const ModalForm: React.FC<ModalFormProps> = ({
 
 	const handleSubmitForm = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
-		if (formState.valueName) {
-			dispatch(addReqValueFavorites(formState));
-			closeModal(e);
-		}
+		setIsActiveSave(true);
 	};
+
+	useEffect(() => {
+		if (formState.valueName && isActiveSave) {
+			dispatch(addReqValueFavorites(formState));
+			dispatch(openCloseModal(false));
+		}
+	}, [isActiveSave]);
+
 	
 	return (
 		<>
@@ -112,14 +118,18 @@ const ModalForm: React.FC<ModalFormProps> = ({
 						type='submit'
 						onClick={closeModal}
 					>
-						{noBtnName}
+						{
+							noBtnName
+						}
 					</button>
 					<button
 						className={styles.modal__block_formBtnSave}
 						type='submit'
 						onClick={handleSubmitForm}
 					>
-						{btnName}
+						{
+							btnName
+						}
 					</button>
 				</div>
 			</form>

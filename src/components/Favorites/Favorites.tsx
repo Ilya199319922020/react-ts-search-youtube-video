@@ -1,7 +1,12 @@
 import React from 'react';
+import { useAppSelector } from '../../hooks/redux';
 import styles from '../../styles/Favorites.module.scss';
+import { FavoritesProp } from '../../TypeProps/TypeProps';
+import FavoriteElement from './FavoriteElement/FavoriteElement';
 
-const Favorites = () => {
+const Favorites: React.FC<FavoritesProp> = ({ }) => {
+	const { favorites } = useAppSelector(state => state.favoritesSlice);
+
 	return (
 		<div
 			className={styles.favorites}
@@ -11,16 +16,14 @@ const Favorites = () => {
 			>
 				Избранное
 			</h3>
-			<div
-				className={styles.favorites__block}
-			>
-				<div
-					className={styles.favorites__block_element}
-				>
-					'ktvtyn'
-				</div>
-			</div>
-
+			{
+				favorites.length > 0 && favorites
+					.map(h => <FavoriteElement
+						key={h.valueReq}
+						valueReq={h.valueReq}
+					/>
+					)
+			}
 		</div>
 	);
 };

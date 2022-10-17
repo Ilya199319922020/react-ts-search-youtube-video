@@ -40,3 +40,11 @@ export interface ModalFormProps {
 	btnName: string;
 	videoList: IVideoCard[];
 }
+
+export interface FavoritesProp {
+	
+}
+
+export interface FavoriteElementProps {
+	valueReq: string;
+}

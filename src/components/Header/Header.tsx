@@ -20,19 +20,26 @@ const Header: React.FC<HeaderProps> = ({ setIsSearchPage, isSearchPage }) => {
 					<img src={logo} width={'19.54px'} />
 				</div>
 				<button
-					className={styles.container__header_leftActiveBtn}
+					className={
+						isSearchPage
+							? styles.container__header_leftActiveBtn
+							: styles.container__header_leftBtn
+					}
 					onClick={handleIsPage}
 				>
 					Поиск
 				</button>
 				<button
-					className={styles.container__header_leftBtn}
+									className={
+						!isSearchPage
+							? styles.container__header_leftActiveBtn
+							: styles.container__header_leftBtn
+					}
 					onClick={handleIsPage}
-				>
+									>
 					Избранное
 				</button>
 			</div>
-
 			<button
 				className={styles.container__header_exitBtn}
 			>
