@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from '../../styles/VideoList.module.scss';
 import listIcon from '../../assets/icon/list.png';
-import gridIcon from '../../assets/icon/grid.png';
+import gridActive from '../../assets/icon/gridActive.png';
+import listIconActive from '../../assets/icon/listActive.png';
+import grid from '../../assets/icon/grid.png';
 import VideoCardPage from './VideoCardPage';
 import { VideoListProps } from '../../TypeProps/TypeProps';
 
 const VideoList: React.FC<VideoListProps> = ({ videoList, searchField }) => {
+  const [isActiveIcon, setIsActiveIcon] = useState(true);
+  
 
   return (
     <div
@@ -27,11 +31,15 @@ const VideoList: React.FC<VideoListProps> = ({ videoList, searchField }) => {
         <div
           className={style.video__title_icon}
         >
-          <button>
-            <img src={listIcon} />
+          <button
+            onClick={()=>setIsActiveIcon(false)}
+          >
+            <img src={isActiveIcon ? listIcon : listIconActive} />
           </button>
-          <button>
-            <img src={gridIcon} />
+          <button
+            onClick={()=>setIsActiveIcon(true)}
+          >
+            <img src={isActiveIcon ? gridActive : grid} />
           </button>
         </div>
       </div>

@@ -27,6 +27,7 @@ a:active {
 	outline: none;
 }
 
+
 nav,
 footer,
 header,
@@ -46,6 +47,7 @@ body {
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
+	background: #FAFAFA;
 }
 
 

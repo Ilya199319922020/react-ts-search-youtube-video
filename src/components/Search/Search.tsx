@@ -18,7 +18,6 @@ const Search: React.FC<SearchProps> = ({ }) => {
 	const { favorites } = useAppSelector(state => state.favoritesSlice);
 	const { nameToken } = useAppSelector(state => state.authReducer);
 	const [isReq, setIsReq] = useState(false);
-
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,11 +47,11 @@ const Search: React.FC<SearchProps> = ({ }) => {
 		const tokenLogin: any = localStorage.getItem(`${nameToken}`);
 		const objLoginToken = JSON.parse(tokenLogin)
 		if (favorites.length) {
-			localStorage.setItem(`${ nameToken}`, JSON.stringify(favorites))
+			localStorage.setItem(`${nameToken}`, JSON.stringify(favorites))
 		}
 	}, [favorites])
 
-	const style = videoList.length ? stylesList : styles;
+	const style = videoList.length  ? stylesList : styles;
 
 	return (
 		<main

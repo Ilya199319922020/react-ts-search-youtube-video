@@ -12,8 +12,7 @@ const Container = () => {
 			className={styles.container}
 		>
 			<Search />
-			{
-				searchField && videoList.length > 0
+			{videoList.length > 0
 				&&
 				<VideoList
 					videoList={videoList}

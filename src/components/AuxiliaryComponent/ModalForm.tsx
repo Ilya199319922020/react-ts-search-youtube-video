@@ -82,7 +82,9 @@ const ModalForm: React.FC<ModalFormProps> = ({
 				<div
 					className={styles.modal__block_formTextName}
 				>
-					{title}
+					{
+						btnName !== 'Изменить' && <span style={{ color: 'red' }}>*</span>
+					} {title}
 				</div>
 				<input
 					className={styles.modal__block_formInputName}

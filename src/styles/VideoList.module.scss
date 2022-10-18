@@ -17,11 +17,13 @@
 $wb: 245px;
 $hb: 32px;
 
+
+
 .main {
-	margin-top: 80px;
+	
 	display: flex;
 	flex-direction: column;
-	padding: 40px 200px 40px 200px;
+	padding: 40px 0 40px 0;
 
 	.main__title {
 		text-align: start;
@@ -33,23 +35,25 @@ $hb: 32px;
 	.main__form {
 
 		.main__form_input {
+			position: relative;
 			height: 52px;
 			width: 890px;
 			border-top: 1px solid rgba(39, 39, 39, 0.3);
 			border-left: 1px solid rgba(39, 39, 39, 0.3);
 			border-bottom: 1px solid rgba(39, 39, 39, 0.3);
 			border-radius: 10px 0 0 10px;
+			font-size: 20px;
+			line-height: 24px;
+			padding: 14px 16.55px 14px 15px;
 		}
-		.main__form_iconBtn{
-			background-color: rgb(255, 255, 255);
-			position: absolute;
-			top: 28.2%;
-			left: 69%;
 
+		.main__form_iconBtn {
+			position: absolute;
+			top: 187px;
+			left: 71%;
+			background-color: rgb(255, 255, 255);
 		}
-		// .main__form_iconBtn svg:hover{
-		// 	color : "red";
-		// }
+
 		.main__form_inputFocus {
 			height: 52px;
 			width: 536px;
@@ -74,13 +78,15 @@ $hb: 32px;
 			height: 52px;
 			width: 150px;
 			color: #FFFFFF;
+			font-size: 20px;
+			line-height: 24px;
 		}
 	}
 }
 
 .video {
-	padding: 0px 200px 28px 200px;
-
+	padding: 0px 0 28px 0;
+height: auto;
 	.video__title {
 		display: flex;
 		justify-content: space-between;
@@ -118,6 +124,10 @@ $hb: 32px;
 		align-items: flex-start;
 		justify-content: space-between;
 		grid-row-gap: 28px;
+
+		.video__btn_iconList {
+			background-color: #E5E5E5;
+		}
 
 		.videoCard {
 			display: flex;

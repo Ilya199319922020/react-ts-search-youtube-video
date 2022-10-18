@@ -3,7 +3,6 @@ import { SearchFormProps } from '../../TypeProps/TypeProps';
 import styles from '../../styles/Search.module.scss';
 import stylesList from '../../styles/VideoList.module.scss';
 
-
 export const SearchForm: React.FC<SearchFormProps> = ({
 	children, searchField, videoList, onModalSave,
 	handleChangeSearch, handleSubmitSearch
@@ -16,7 +15,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
 		>
 			<input
 				className={style.main__form_input}
-				placeholder={'   Что хотите посмотреть?'}
+				placeholder={'Что хотите посмотреть?'}
 				type={'text'}
 				value={searchField}
 				onChange={handleChangeSearch}
