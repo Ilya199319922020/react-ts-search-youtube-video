@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from '../../styles/Container.module.scss';
 import logo from '../../assets/icon/sibdev_logo.png';
-import { HeaderProps } from '../../TypeProps/TypeProps';
 import { Link, Outlet } from 'react-router-dom';
 import { removeAuth } from '../../store/reducers/ActionCreatotrs';
 import { useAppDispatch } from '../../hooks/redux';
@@ -11,13 +10,10 @@ const Header = ({ }) => {
 
 	const removeOnToken = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
-		const tokenLogin: any = localStorage.getItem('loginToken');
-		const objLoginToken = JSON.parse(tokenLogin)
-		if (tokenLogin && objLoginToken.isUser) {
-			localStorage.setItem('loginToken', JSON.stringify({ key: objLoginToken.key, isUser: false, stateFavorite: [] }))
-		}
+		localStorage.removeItem('token');
 		dispatch(removeAuth())
 	};
+	
 	return (
 		<>
 			<header

@@ -13,7 +13,7 @@ const Container = () => {
 		>
 			<Search />
 			{
-				videoList.length > 0
+				searchField && videoList.length > 0
 				&&
 				<VideoList
 					videoList={videoList}

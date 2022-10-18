@@ -16,6 +16,7 @@ const Search: React.FC<SearchProps> = ({ }) => {
 	const { isModal } = useAppSelector(state => state.favoritesSlice);
 	const { searchField } = useAppSelector(state => state.favoritesSlice);
 	const { favorites } = useAppSelector(state => state.favoritesSlice);
+	const { nameToken } = useAppSelector(state => state.authReducer);
 	const [isReq, setIsReq] = useState(false);
 
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -44,10 +45,10 @@ const Search: React.FC<SearchProps> = ({ }) => {
 	}, [isReq]);
 
 	useEffect(() => {
-		const tokenLogin: any = localStorage.getItem("loginToken");
+		const tokenLogin: any = localStorage.getItem(`${nameToken}`);
 		const objLoginToken = JSON.parse(tokenLogin)
-		if (favorites.length && objLoginToken.isUser) {
-			localStorage.setItem('loginToken', JSON.stringify({ key: objLoginToken.key, isUser: true, stateFavorite: [] }))
+		if (favorites.length) {
+			localStorage.setItem(`${ nameToken}`, JSON.stringify(favorites))
 		}
 	}, [favorites])
 

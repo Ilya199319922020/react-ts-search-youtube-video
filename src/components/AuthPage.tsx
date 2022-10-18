@@ -6,14 +6,14 @@ import users from '../assets/users/users.json';
 import axios from 'axios';
 import { createToken } from '../assets/secondaryFunctions/createToken';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { setAuth } from '../store/reducers/ActionCreatotrs';
+import { addNameToken, addStoreLocalData, setAuth } from '../store/reducers/ActionCreatotrs';
 import { Navigate } from 'react-router-dom';
 import { favoritesSlice } from '../store/reducers/favoritesSlice';
+import { authSlice } from '../store/reducers/authSlice';
 
 const AuthPage = () => {
 	const dispatch = useAppDispatch();
-	const { isAuth, error } = useAppSelector(state => state.authReducer);
-	const { favorites } = useAppSelector(state => state.favoritesSlice);
+	const { isAuth, error, nameToken } = useAppSelector(state => state.authReducer);
 	const [loginPayload, setLoginPayload] = useState<IUser>({
 		login: '', password: ''
 	});
@@ -22,31 +22,38 @@ const AuthPage = () => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
 		const { name, value } = e.target;
-		setLoginPayload(prevState => ({ ...prevState, [name]: value }))
+		setLoginPayload(prevState => ({ ...prevState, [name]: value }));
 	};
 
 	const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
+		if (loginPayload.login) {
+			dispatch(addNameToken(loginPayload.login));
+		}
 		setIsSubmit(true);
 	};
+	const u1: string = 'user1'
 	const token = localStorage.getItem("token");
-	const tokenLogin: any = localStorage.getItem("loginToken");
-	
+	const tokenLogin: any = localStorage.getItem(`${nameToken}`);
+
+	const verification = users
+		.some(u => u.login === loginPayload.login && u.password === loginPayload.password
+		);
+ 
 	useEffect(() => {
+		if (tokenLogin && tokenLogin[nameToken] === loginPayload.login) {
+			dispatch(addStoreLocalData(JSON.parse(tokenLogin)))
+		}
 		if (isSubmit && Object.keys(loginPayload).length !== 0) {
-			if (loginPayload.login === users.login && loginPayload.password === users.password) {
+			if (verification) {
 				const tokenCreate = createToken();
 				localStorage.setItem("token", tokenCreate);
-				localStorage.setItem('loginToken', JSON.stringify({ key: loginPayload.login, isUser: true, stateFavorite: [] }))
 				dispatch(setAuth())
 				setIsSubmit(false)
 			} else {
 				dispatch(setAuth('Вееден неверный логин или парооль'))
 				setIsSubmit(false)
 			}
-		}
-		if (tokenLogin && tokenLogin.key === loginPayload.login) {
-			dispatch(favoritesSlice.actions.addStoreSaveLocal(tokenLogin.stateFavorite))
 		}
 	}, [isSubmit]);
 

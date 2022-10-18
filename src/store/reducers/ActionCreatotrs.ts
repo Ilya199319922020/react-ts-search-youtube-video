@@ -75,3 +75,21 @@ export const setValueCearchField = (str: string | any) => async (dispatch: AppDi
 		dispatch(favoritesSlice.actions.favoritesError(e.message));
 	}
 };
+
+export const addNameToken = (str: string ) => async (dispatch: AppDispatch) => {
+	try {
+		dispatch(authSlice.actions.authAddNameToken(str));
+	}
+	catch (e: any) {
+		dispatch(authSlice.actions.authFetchingError(e.message));
+	}
+};
+
+export const addStoreLocalData= (data: IFavorites[] ) => async (dispatch: AppDispatch) => {
+	try {
+		dispatch(favoritesSlice.actions.addStoreSaveLocal(data));
+	}
+	catch (e: any) {
+		dispatch(favoritesSlice.actions.favoritesError(e.message));
+	}
+};
