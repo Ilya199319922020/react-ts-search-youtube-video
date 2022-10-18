@@ -8,10 +8,12 @@ import { createToken } from '../assets/secondaryFunctions/createToken';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { setAuth } from '../store/reducers/ActionCreatotrs';
 import { Navigate } from 'react-router-dom';
+import { favoritesSlice } from '../store/reducers/favoritesSlice';
 
 const AuthPage = () => {
 	const dispatch = useAppDispatch();
 	const { isAuth, error } = useAppSelector(state => state.authReducer);
+	const { favorites } = useAppSelector(state => state.favoritesSlice);
 	const [loginPayload, setLoginPayload] = useState<IUser>({
 		login: '', password: ''
 	});
@@ -27,12 +29,15 @@ const AuthPage = () => {
 		e.preventDefault();
 		setIsSubmit(true);
 	};
-
+	const token = localStorage.getItem("token");
+	const tokenLogin: any = localStorage.getItem("loginToken");
+	
 	useEffect(() => {
 		if (isSubmit && Object.keys(loginPayload).length !== 0) {
 			if (loginPayload.login === users.login && loginPayload.password === users.password) {
 				const tokenCreate = createToken();
 				localStorage.setItem("token", tokenCreate);
+				localStorage.setItem('loginToken', JSON.stringify({ key: loginPayload.login, isUser: true, stateFavorite: [] }))
 				dispatch(setAuth())
 				setIsSubmit(false)
 			} else {
@@ -40,9 +45,11 @@ const AuthPage = () => {
 				setIsSubmit(false)
 			}
 		}
+		if (tokenLogin && tokenLogin.key === loginPayload.login) {
+			dispatch(favoritesSlice.actions.addStoreSaveLocal(tokenLogin.stateFavorite))
+		}
 	}, [isSubmit]);
 
-	const token = localStorage.getItem("token");
 	if (token && isAuth) {
 		return <Navigate to='/search' />
 	}

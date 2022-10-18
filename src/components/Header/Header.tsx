@@ -3,9 +3,21 @@ import styles from '../../styles/Container.module.scss';
 import logo from '../../assets/icon/sibdev_logo.png';
 import { HeaderProps } from '../../TypeProps/TypeProps';
 import { Link, Outlet } from 'react-router-dom';
+import { removeAuth } from '../../store/reducers/ActionCreatotrs';
+import { useAppDispatch } from '../../hooks/redux';
 
 const Header = ({ }) => {
+	const dispatch = useAppDispatch()
 
+	const removeOnToken = (e: React.MouseEvent<HTMLElement>) => {
+		e.preventDefault();
+		const tokenLogin: any = localStorage.getItem('loginToken');
+		const objLoginToken = JSON.parse(tokenLogin)
+		if (tokenLogin && objLoginToken.isUser) {
+			localStorage.setItem('loginToken', JSON.stringify({ key: objLoginToken.key, isUser: false, stateFavorite: [] }))
+		}
+		dispatch(removeAuth())
+	};
 	return (
 		<>
 			<header
@@ -34,8 +46,11 @@ const Header = ({ }) => {
 				</div>
 				<button
 					className={styles.container__header_exitBtn}
+					onClick={removeOnToken}
 				>
-					Выйти
+					<Link to='/login'>
+						Выйти
+					</Link>
 				</button>
 			</header>
 			<Outlet />

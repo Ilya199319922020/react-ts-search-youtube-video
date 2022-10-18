@@ -4,7 +4,7 @@ import { IUser } from "../../models/User";
 interface AuthState {
 	user: IUser[];
 	isAuth: boolean;
-		error: string;
+	error: string;
 };
 
 const initialState: AuthState = {
@@ -19,6 +19,9 @@ export const authSlice = createSlice({
 	reducers: {
 		authSuccess(state) {
 			state.isAuth = true;
+		},
+		authUnSubscribe(state) {
+			state.isAuth = false;
 		},
 		authFetchingError(state, action: PayloadAction<string>) {
 			state.isAuth = false;

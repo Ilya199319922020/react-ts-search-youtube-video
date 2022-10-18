@@ -4,17 +4,17 @@ import videoSlice from './reducers/videoSlice';
 import favoritesSlice from './reducers/favoritesSlice';
 
 const rootReducer = combineReducers({
-authReducer,
-videoSlice,
-favoritesSlice
+	authReducer,
+	videoSlice,
+	favoritesSlice
 });
 
 export const setupStore = () => {
 	return configureStore({
-		 reducer: rootReducer,
-		 	})
+		reducer: rootReducer,
+	})
 };
 
-export type RootState = ReturnType<typeof rootReducer>
-export type AppStore = ReturnType<typeof setupStore>
-export type AppDispatch = AppStore['dispatch']
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore['dispatch'];

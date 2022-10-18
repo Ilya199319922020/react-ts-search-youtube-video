@@ -17,6 +17,14 @@ export const setAuth = (error?: any) => async (dispatch: AppDispatch) => {
 	}
 };
 
+export const removeAuth = () => async (dispatch: AppDispatch) => {
+	try {
+		dispatch(authSlice.actions.authUnSubscribe())
+	} catch (e: any) {
+		dispatch(authSlice.actions.authFetchingError(e.message));
+	}
+};
+
 export const fetchListVideo = createAsyncThunk(
 	'search/video',
 	async ({ name, maxResult = 12 }: { name: string | undefined, maxResult?: number }, thunkApi) => {

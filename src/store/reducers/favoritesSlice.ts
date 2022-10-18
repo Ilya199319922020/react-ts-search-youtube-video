@@ -30,17 +30,20 @@ export const favoritesSlice = createSlice({
 
 			state.favorites = [...state.favorites
 				.map(element => {
-					if(element.id = action.payload.id){
+					if (element.id = action.payload.id) {
 						return action.payload;
 					}
-				return element;
+					return element;
 				})]
 		},
 		favoritesError(state, action: PayloadAction<string>) {
 			state.error = action.payload;
 		},
-		setSeachField(state, action: PayloadAction<string>){
+		setSeachField(state, action: PayloadAction<string>) {
 			state.searchField = action.payload;
+		},
+		addStoreSaveLocal(state, action: PayloadAction<IFavorites[]>) {
+			state.favorites = action.payload
 		}
 	},
 });

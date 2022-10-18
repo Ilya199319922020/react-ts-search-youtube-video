@@ -15,6 +15,7 @@ const Search: React.FC<SearchProps> = ({ }) => {
 	const { videoList } = useAppSelector(state => state.videoSlice);
 	const { isModal } = useAppSelector(state => state.favoritesSlice);
 	const { searchField } = useAppSelector(state => state.favoritesSlice);
+	const { favorites } = useAppSelector(state => state.favoritesSlice);
 	const [isReq, setIsReq] = useState(false);
 
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -41,6 +42,14 @@ const Search: React.FC<SearchProps> = ({ }) => {
 			setIsReq(false);
 		}
 	}, [isReq]);
+
+	useEffect(() => {
+		const tokenLogin: any = localStorage.getItem("loginToken");
+		const objLoginToken = JSON.parse(tokenLogin)
+		if (favorites.length && objLoginToken.isUser) {
+			localStorage.setItem('loginToken', JSON.stringify({ key: objLoginToken.key, isUser: true, stateFavorite: [] }))
+		}
+	}, [favorites])
 
 	const style = videoList.length ? stylesList : styles;
 
