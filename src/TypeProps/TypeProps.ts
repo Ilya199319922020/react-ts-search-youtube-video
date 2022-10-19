@@ -12,6 +12,11 @@ export interface VideoListProps {
 	searchField: string;
 }
 
+export interface VideoCardProps{
+	snippet: IVideoCard;
+	isActiveIcon: boolean;
+}
+
 export interface SearchFormProps {
 	searchField: string;
 	children: ReactNode;

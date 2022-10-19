@@ -20,10 +20,10 @@ $hb: 32px;
 
 
 .main {
-	
+
 	display: flex;
 	flex-direction: column;
-	padding: 40px 0 40px 0;
+	padding: 40px 0px 40px 0px;
 
 	.main__title {
 		text-align: start;
@@ -33,6 +33,7 @@ $hb: 32px;
 	}
 
 	.main__form {
+		max-width: 1040px;
 
 		.main__form_input {
 			position: relative;
@@ -85,8 +86,10 @@ $hb: 32px;
 }
 
 .video {
-	padding: 0px 0 28px 0;
-height: auto;
+	padding: 0px 0px 28px 0px;
+	// height: auto;
+	max-width: 1040px;
+
 	.video__title {
 		display: flex;
 		justify-content: space-between;
@@ -142,6 +145,7 @@ height: auto;
 				margin-bottom: 8px;
 				margin-top: 8.3px;
 				@extend %texthide;
+
 			}
 
 			.videoCard__description {
@@ -155,4 +159,90 @@ height: auto;
 			}
 		}
 	}
+
+	.video__list_Active {
+		display: grid;
+		grid-auto-rows: 87.7px;
+		grid-row-gap: 32px;
+
+	}
+
+	.videoCard_Active {
+		height: 87.7px;
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns: 1fr, 1fr;
+		grid-template-areas:
+			"column1 column2"
+			"column1 column3";
+
+		.videoCard__item_Active {
+			width: 157px;
+			height: 87.7px;
+			grid-area: column1;
+		}
+
+		.videoCard__title_Active {
+			grid-area: column2;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			height: 40px;
+		}
+
+		.videoCard__description_Active {
+			grid-area: column3;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			height: 40px;
+		}
+	}
 }
+
+@media (max-width: 1439px) {
+	.main__form {
+		max-width: 688px;
+		margin: 0 auto;
+
+		.main__form_input {
+			max-width: 538px;
+		}
+
+		.main__form_label button {
+			max-width: 150px;
+		}
+	}
+
+	.video {
+		max-width: 688px;
+		margin: 0 auto;
+
+		.video__list {
+			grid-template: 1fr / repeat(3, 245px);
+			grid-row-gap: 20px;
+
+			.videoCard {
+				max-width: 216px;
+
+				.videoCard__item {
+					width: 216px;
+					height: 137.7px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+
+	.main__form_input {
+		max-width: 213px;
+	}
+
+	.main__form_label button {
+		max-width: 91px;
+	}
+}
+
+@media (max-width: 319px) {}

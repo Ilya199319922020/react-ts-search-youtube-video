@@ -72,4 +72,14 @@
 	}
 }
 
-//active list video
+@media (max-width: 767px) {
+	
+	.main__form_input {
+		max-width: 213px;
+	}
+
+	.main__form_label button {
+		max-width: 91px;
+	}
+}
+

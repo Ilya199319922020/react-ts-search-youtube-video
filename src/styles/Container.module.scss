@@ -2,6 +2,21 @@
 	max-width: 1040px;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	margin: 0 auto;
-	
+
 }
+
+@media (max-width: 1439px) {
+	.container {
+		 max-width: 688px;
+			
+	}
+}
+
+// @media  (max-width: 767px){
+// 	.container {
+// 		 max-width: 213px;
+			
+// 	}
+// }

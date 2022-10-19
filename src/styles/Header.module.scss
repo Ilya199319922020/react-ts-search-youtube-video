@@ -12,35 +12,38 @@
 }
 
 .wrapper {
-	width: 100%;
+	max-width: 100vw;
 	background-color: #ffffff;
 	height: 80px;
 	position: sticky;
 	border-bottom: 1px solid #F1F1F1;
+	// padding: 0 40px;
 
 	.container__header {
-		
-		max-width: 1040px;
+
+		width: 1040px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding: 0 0 0 0;
 		margin: 0 auto;
-		
+
 
 
 		.container__header_left {
-			width: 269px;
+			// width: 269px;
 			display: flex;
 			justify-content: space-between;
 
 			.container__header_leftLogo {
 				display: flex;
 				align-items: center;
+				margin-right: 56px
 			}
 
 			.container__header_leftBtnaAactive {
 				@extend %stylebtn;
+				margin-right: 40px
 			}
 
 			.container__header_rightBtnaAactive {
@@ -52,6 +55,7 @@
 				@extend %stylebtn;
 				border-bottom: 0px solid #1390E5;
 				color: rgba(39, 39, 39, 0.3);
+				margin-right: 40px
 			}
 
 			.container__header_rightBtn {
@@ -73,6 +77,78 @@
 		.container__header_exitBtn {
 			@extend %stylebtn;
 			border-bottom: 0px solid #1390E5;
+		}
+	}
+}
+
+@media (max-width: 1439px) {
+	.wrapper {
+
+		.container__header {
+			max-width: 688px;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.wrapper {
+
+		.container__header {
+
+			max-width: 304px;
+
+			.container__header_left {
+				width: 143px;
+
+				.container__header_leftLogo {
+					display: flex;
+					align-items: center;
+					margin-right: 23px
+				}
+
+				.container__header_leftBtn {
+					font-size: 14px;
+					line-height: 28px;
+					width: 51px;
+					margin-right: 20px
+				}
+
+				.container__header_leftBtnaAactive {
+					font-size: 14px;
+					line-height: 28px;
+					width: 51px;
+					margin-right: 20px
+				}
+
+				.container__header_rightBtn {
+					font-size: 14px;
+					line-height: 28px;
+					width: 72px;
+				}
+
+				.container__header_exitBtn {
+					font-size: 14px;
+					line-height: 28px;
+					width: 43px;
+				}
+			}
+
+			.container__header_rightBtnaAactive {
+				font-size: 14px;
+				line-height: 28px;
+				width: 72px;
+			}
+		}
+	}
+}
+
+@media (max-width: 319px) {
+	.wrapper {
+
+		.container__header {
+
+			//max-width: none;
+
 		}
 	}
 }

@@ -3,13 +3,12 @@ import styles from '../styles/AuthPage.module.scss';
 import logo from '../assets/icon/sibdev_logo.png';
 import { IUser } from '../models/User';
 import users from '../assets/users/users.json';
-import axios from 'axios';
 import { createToken } from '../assets/secondaryFunctions/createToken';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { addNameToken, addStoreLocalData, setAuth } from '../store/reducers/ActionCreatotrs';
 import { Navigate } from 'react-router-dom';
-import { favoritesSlice } from '../store/reducers/favoritesSlice';
-import { authSlice } from '../store/reducers/authSlice';
+import off from '../assets/icon/f.png';
+import offActive from '../assets/icon/eye.png'
 
 const AuthPage = () => {
 	const dispatch = useAppDispatch();
@@ -18,13 +17,17 @@ const AuthPage = () => {
 		login: '', password: ''
 	});
 	const [isSubmit, setIsSubmit] = useState(false);
+	const [isActivePass, setIsActivePass] = useState(false);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
 		const { name, value } = e.target;
 		setLoginPayload(prevState => ({ ...prevState, [name]: value }));
 	};
-
+const onIsActivePass = (e: React.MouseEvent<HTMLElement>)=>{
+	e.preventDefault();
+	 setIsActivePass(!isActivePass);
+}
 	const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
 		if (loginPayload.login) {
@@ -39,7 +42,7 @@ const AuthPage = () => {
 	const verification = users
 		.some(u => u.login === loginPayload.login && u.password === loginPayload.password
 		);
- 
+
 	useEffect(() => {
 		if (tokenLogin && tokenLogin[nameToken] === loginPayload.login) {
 			dispatch(addStoreLocalData(JSON.parse(tokenLogin)))
@@ -82,14 +85,20 @@ const AuthPage = () => {
 				/>
 				<div className={styles.auth__form_passwordText}>
 					Пароль
+					<button
+						onClick={onIsActivePass}
+					>
+						<img src={isActivePass ? offActive : off} />
+					</button>
 				</div>
 				<input
 					className={styles.auth__form_passwordInput}
-					type="password"
+					type={!isActivePass ? "password" : "text"}
 					name="password"
 					value={loginPayload.password}
 					onChange={handleChange}
 				/>
+
 				<button
 					onClick={handleSubmit}
 					className={styles.auth__form_btn}

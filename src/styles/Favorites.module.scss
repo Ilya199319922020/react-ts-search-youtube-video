@@ -21,7 +21,7 @@
 .favorites {
 	//margin-top: 80px;
 	padding: 40px 213px 40px 213px;
-	width: 100%;
+	max-width: 1040px;
 	display: flex;
 	flex-direction: column;
 	align-items: start;
@@ -30,7 +30,7 @@
 	.favorites__header {
 		text-align: center;
 		vertical-align: middle;
-		max-width: 100%;
+		max-width: 1040px;
 		height: 40px;
 		margin-top: 40px;
 		margin-bottom: 40px;

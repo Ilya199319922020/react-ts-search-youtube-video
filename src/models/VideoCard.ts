@@ -1,12 +1,14 @@
 
+
 export interface IVideoCard {
-	etag?: string,
+  
+	etag?: string;
 	snippet: {
-		title: string,
-		description: string,
+		title: string;
+		description: string | undefined;
 		thumbnails?: {
 			default?: {
-				url?: string
+				url?: string;
 			}
 		},
 	}

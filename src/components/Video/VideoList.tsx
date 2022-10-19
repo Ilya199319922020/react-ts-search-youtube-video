@@ -9,7 +9,7 @@ import { VideoListProps } from '../../TypeProps/TypeProps';
 
 const VideoList: React.FC<VideoListProps> = ({ videoList, searchField }) => {
   const [isActiveIcon, setIsActiveIcon] = useState(true);
-  
+
 
   return (
     <div
@@ -32,24 +32,25 @@ const VideoList: React.FC<VideoListProps> = ({ videoList, searchField }) => {
           className={style.video__title_icon}
         >
           <button
-            onClick={()=>setIsActiveIcon(false)}
+            onClick={() => setIsActiveIcon(false)}
           >
             <img src={isActiveIcon ? listIcon : listIconActive} />
           </button>
           <button
-            onClick={()=>setIsActiveIcon(true)}
+            onClick={() => setIsActiveIcon(true)}
           >
             <img src={isActiveIcon ? gridActive : grid} />
           </button>
         </div>
       </div>
       <div
-        className={style.video__list}
+        className={!isActiveIcon ? style.video__list_Active : style.video__list}
       >
         {
           videoList.map((s: any) => <VideoCardPage
-            key={s.etag}
-            snippet={s.snippet}
+            key={s?.etag}
+            snippet={s?.snippet}
+            isActiveIcon={isActiveIcon}
           />
           )
         }
