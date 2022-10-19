@@ -30,7 +30,7 @@ export const fetchListVideo = createAsyncThunk(
 	async ({ name, maxResult = 12 }: { name: string | undefined, maxResult?: number }, thunkApi) => {
 		try {
 			const response = await axios
-				.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBJ4ZZNuHXJx8QJLYKh--8RHvavzTDFACM&maxResults=${maxResult}&q=${name}`);
+				.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAV9a9kZtwKibDxbD1xV0CkiDawpzYY8ww&maxResults=${maxResult}&q=${name}`);
 			const { items } = response.data;
 
 			return items;

@@ -15,8 +15,6 @@ const VideoCardPage: React.FC<any> = ({ snippet, isActiveIcon }) => {
         src={
           snippet.thumbnails?.default?.url
         }
-        // height={'137.7px'}
-        // width={'245px'}
       />
       <p
         className={!isActiveIcon ? style.videoCard__title_Active : style.videoCard__title}
