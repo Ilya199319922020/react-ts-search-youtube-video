@@ -137,6 +137,11 @@ $hb: 32px;
 			flex-direction: column;
 			height: 218px;
 
+			.videoCard__item {
+				height: 137.7px;
+				width: 245px;
+			}
+
 			.videoCard__title {
 				font-weight: 500;
 				font-size: 14px;
@@ -164,6 +169,7 @@ $hb: 32px;
 		display: grid;
 		grid-auto-rows: 87.7px;
 		grid-row-gap: 32px;
+		max-width: 747px;
 
 	}
 
@@ -176,8 +182,10 @@ $hb: 32px;
 			"column1 column2"
 			"column1 column3";
 
+		//align-items: flex-start;
+		//ustify-content: space-between;
 		.videoCard__item_Active {
-			width: 157px;
+			min-width: 157px;
 			height: 87.7px;
 			grid-area: column1;
 		}
@@ -188,6 +196,7 @@ $hb: 32px;
 			justify-content: flex-start;
 			align-items: center;
 			height: 40px;
+			width: 510px;
 		}
 
 		.videoCard__description_Active {
@@ -196,8 +205,20 @@ $hb: 32px;
 			justify-content: flex-start;
 			align-items: center;
 			height: 40px;
+			width: 510px;
 		}
 	}
+
+	// margin-bottom: 32px;
+
+	// grid-template-columns: 50% 50%;
+	// grid-template-rows: auto auto;
+	// grid-template-areas: 
+	// 	 "column1 column2"
+	// 	 "column1 column3";
+
+
+
 }
 
 @media (max-width: 1439px) {
