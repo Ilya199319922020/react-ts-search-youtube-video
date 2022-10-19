@@ -24,10 +24,10 @@ const AuthPage = () => {
 		const { name, value } = e.target;
 		setLoginPayload(prevState => ({ ...prevState, [name]: value }));
 	};
-const onIsActivePass = (e: React.MouseEvent<HTMLElement>)=>{
-	e.preventDefault();
-	 setIsActivePass(!isActivePass);
-}
+	const onIsActivePass = (e: React.MouseEvent<HTMLElement>) => {
+		e.preventDefault();
+		setIsActivePass(!isActivePass);
+	}
 	const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
 		if (loginPayload.login) {
@@ -87,8 +87,11 @@ const onIsActivePass = (e: React.MouseEvent<HTMLElement>)=>{
 					Пароль
 					<button
 						onClick={onIsActivePass}
+						className={styles.auth__form_passwordTextBtn}
 					>
-						<img src={isActivePass ? offActive : off} />
+						{
+							isActivePass && <span className={styles.auth__form_passwordTextBtnActive}></span>
+						}
 					</button>
 				</div>
 				<input

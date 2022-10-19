@@ -59,7 +59,7 @@ $coltext: rgba(23, 23, 25, 0.3);
 	}
 
 	.auth__form {
-		width: 334px;
+		max-width: 334px;
 		height: 200px;
 		margin: 0 auto;
 
@@ -79,15 +79,35 @@ $coltext: rgba(23, 23, 25, 0.3);
 			margin-top: 20px;
 		}
 
-		.auth__form_passwordText button {
+
+
+		.auth__form_passwordText button::before {
+			position: relative;
+			content: '';
+			background: url('../assets/icon/eye-off.svg') 0 0 no-repeat;
 			position: absolute;
-			top: 34px;
-			left: 288px;
+			width: 24px;
+			height: 24px;
+			top: 35px;
+			left: 290px;
 		}
+
+		.auth__form_passwordTextBtnActive::before {
+			position: relative;
+			content: '';
+			background: url('../assets/icon/passActive.svg') 0 0 no-repeat;
+			position: absolute;
+			width: 24px;
+			height: 24px;
+			top: 35px;
+			left: 290px;
+		}
+
+
 
 		.auth__form_passwordInput {
 			@extend %styleInput;
-			
+
 
 		}
 
@@ -103,5 +123,39 @@ $coltext: rgba(23, 23, 25, 0.3);
 			font-size: 20px;
 			line-height: 24px;
 		}
+
+		.auth__form_btn:focus {
+			background: #0c68a5;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.auth {
+		max-width: 319px;
+
+		.auth__form {
+
+			.auth__form_loginText,
+			.auth__form_passwordText {
+
+				margin-left: 16px;
+			}
+		}
+
+		.auth__form_loginInput,
+		.auth__form_passwordInput {
+			max-width: 284px;
+		}
+
+		.auth__form_passwordText button::before {
+			left: 250px !important;
+		}
+
+		.auth__form_passwordTextBtnActive::before {
+			left: 250px !important;
+		}
+
+		.auth__form_loginText {}
 	}
 }
