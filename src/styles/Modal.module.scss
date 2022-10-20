@@ -41,18 +41,22 @@
 	right: 0;
 	left: 0;
 	bottom: 0;
+	height: 100vh;
 }
 
 .modal {
 	position: absolute;
+	margin-top: 15%;
 	left: 50%;
-	top: 50%;
 	transform: translate(-50%, -50%);
 	background: #FFFFFF;
 	box-shadow: 0px 10px 50px rgba(19, 144, 229, 0.8);
 	border-radius: 10px;
 	height: 573px;
-	width: 510px;
+	max-width: 510px;
+	position: relative;
+
+
 
 	.modal__block {
 		text-align: center;
@@ -74,7 +78,12 @@
 		}
 
 		.modal__block_formInputRequest {
-			@extend %sinput;
+			background: #FAFAFA;
+			border: 1px solid rgba(23, 23, 25, 0.1);
+			border-radius: 10px;
+			width: 430px;
+			height: 48px;
+			margin-bottom: 36px;
 		}
 
 		.modal__block_formTextName {
@@ -190,7 +199,56 @@
 		display: flex;
 		justify-content: flex-start;
 	}
-	.modalSave__btn{
+
+	.modalSave__btn {
 		background-color: rgb(255, 255, 255);
 	}
+}
+
+
+
+@media (max-width: 767px) {
+	.modal {
+		max-width: 510px;
+		height: 550px;
+
+		.modal__block {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 22px 10px 36px 10px;
+			margin: 0 auto;
+
+			.modal__block_formInputReques {
+				max-width: 84px;
+				margin-bottom: 24px;
+			}
+
+			.modal__block_formTextRequest {
+				width: 284px;
+			}
+
+			.modal__block_formInputName,
+			.modal__block_formInputSort {
+				max-width: 284px;
+				margin-bottom: 24px;
+
+			}
+
+			.modal__block_formRatingInput {
+				max-width: 169px;
+			}
+
+			.modal__block_formBtnNoSave,
+			.modal__block_formBtnSave {
+				min-width: 114px;
+				font-size: 16px;
+			}
+		}
+
+	}
+
+
+
 }

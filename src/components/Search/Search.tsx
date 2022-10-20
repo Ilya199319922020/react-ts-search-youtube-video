@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SearchForm } from '../AuxiliaryComponent/SearchForm';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchListVideo, addReqValueFavorites, openCloseModal, setValueCearchField } from '../../store/reducers/ActionCreatotrs';
@@ -19,7 +19,7 @@ const Search = ({ }) => {
 	const [isReq, setIsReq] = useState(false);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [isModalSave, setIsModalSave] = useState(false);
-
+	
 	const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
 		const { value } = e.target;
@@ -49,7 +49,12 @@ const Search = ({ }) => {
 		if (favorites.length) {
 			localStorage.setItem(`${nameToken}`, JSON.stringify(favorites))
 		}
-	}, [favorites])
+	}, [favorites]);
+
+	useEffect(() => {
+		if (isModal) document.body.style.overflow = 'hidden';
+		else document.body.style.overflow = 'visible';
+	}, [isModal]);
 
 	const style = videoList.length ? stylesList : styles;
 
@@ -83,7 +88,6 @@ const Search = ({ }) => {
 						{...valuePropsModalForm}
 					/>
 				</ModalVideo>
-
 			}
 		</main>
 	);

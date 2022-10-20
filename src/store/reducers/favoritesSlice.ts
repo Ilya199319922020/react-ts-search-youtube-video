@@ -14,6 +14,7 @@ const initialState: Favorites = {
 	error: '',
 	isModal: false,
 	searchField: '',
+	
 };
 
 export const favoritesSlice = createSlice({
@@ -44,7 +45,8 @@ export const favoritesSlice = createSlice({
 		},
 		addStoreSaveLocal(state, action: PayloadAction<IFavorites[]>) {
 			state.favorites = action.payload
-		}
+		},
+	
 	},
 });
 

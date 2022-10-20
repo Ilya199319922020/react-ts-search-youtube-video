@@ -93,3 +93,4 @@ export const addStoreLocalData= (data: IFavorites[] ) => async (dispatch: AppDis
 		dispatch(favoritesSlice.actions.favoritesError(e.message));
 	}
 };
+

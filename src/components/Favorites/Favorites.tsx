@@ -22,7 +22,6 @@ const Favorites: React.FC<FavoritesProp> = ({ }) => {
 					.map(h => <FavoriteElement
 						key={h.valueReq}
 						favorite={h}
-
 					/>
 					)
 			}

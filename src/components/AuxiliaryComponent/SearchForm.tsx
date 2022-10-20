@@ -4,7 +4,6 @@ import styles from '../../styles/Search.module.scss';
 import stylesList from '../../styles/VideoList.module.scss';
 import ModalSave from '../Video/ModalVideo/ModalSave';
 
-
 export const SearchForm: React.FC<SearchFormProps> = ({
 	children, searchField, videoList, isModalSave, onModalSave,
 	handleChangeSearch, handleSubmitSearch, setIsModalSave
