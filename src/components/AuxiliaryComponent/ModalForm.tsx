@@ -7,7 +7,7 @@ import { ModalFormProps } from '../../TypeProps/TypeProps';
 
 const ModalForm: React.FC<ModalFormProps> = ({
 	headerName, title, req, valueField,
-	noBtnName, btnName, favorite
+	noBtnName, btnName, favorite, setIsModalSave
 }) => {
 	const { favorites } = useAppSelector(state => state.favoritesSlice)
 	const dispatch = useAppDispatch();
@@ -42,6 +42,7 @@ const ModalForm: React.FC<ModalFormProps> = ({
 	const handleSubmitForm = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
 		setIsActiveSave(true);
+		setIsModalSave(true);
 	};
 
 	useEffect(() => {

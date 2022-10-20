@@ -67,19 +67,20 @@
 			color: #FFFFFF;
 			font-size: 20px;
 			line-height: 24px;
-		}
+		}	
 
 	}
 }
 
 @media (max-width: 767px) {
-	
+
 	.main__form_input {
 		max-width: 213px;
+		font-size: 16px;
 	}
 
 	.main__form_label button {
 		max-width: 91px;
+		font-size: 16px;
 	}
 }
-

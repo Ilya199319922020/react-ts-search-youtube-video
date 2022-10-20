@@ -17,12 +17,12 @@ const Favorites: React.FC<FavoritesProp> = ({ }) => {
 				Избранное
 			</h3>
 			{
-				favorites.length > 0  
+				favorites.length > 0
 				&& favorites
 					.map(h => <FavoriteElement
 						key={h.valueReq}
 						favorite={h}
-						
+
 					/>
 					)
 			}

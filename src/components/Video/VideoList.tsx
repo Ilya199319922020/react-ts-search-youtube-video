@@ -10,7 +10,6 @@ import { VideoListProps } from '../../TypeProps/TypeProps';
 const VideoList: React.FC<VideoListProps> = ({ videoList, searchField }) => {
   const [isActiveIcon, setIsActiveIcon] = useState(true);
 
-
   return (
     <div
       className={style.video}

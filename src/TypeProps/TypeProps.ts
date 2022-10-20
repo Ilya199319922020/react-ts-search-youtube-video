@@ -2,9 +2,8 @@ import React, { ReactNode } from "react";
 import { IFavorites } from "../models/Favorites";
 import { IVideoCard } from "../models/VideoCard";
 
-export interface SearchProps {
-	//searchField: string;
-	//setSeachField: (e: string) => void;
+export interface ModalSaveProps {
+	setIsModalSave: (a: boolean) => void;
 }
 
 export interface VideoListProps {
@@ -12,7 +11,7 @@ export interface VideoListProps {
 	searchField: string;
 }
 
-export interface VideoCardProps{
+export interface VideoCardProps {
 	snippet: IVideoCard;
 	isActiveIcon: boolean;
 }
@@ -24,6 +23,8 @@ export interface SearchFormProps {
 	handleChangeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	handleSubmitSearch: (e: React.MouseEvent<HTMLElement>) => void;
 	onModalSave: (e: React.MouseEvent<HTMLElement>) => void;
+	setIsModalSave: (a: boolean) => void;
+	isModalSave: boolean;
 }
 
 export interface HeaderProps {
@@ -43,7 +44,8 @@ export interface ModalFormProps {
 	noBtnName: string;
 	btnName: string;
 	videoList?: IVideoCard[];
-	favorite?:IFavorites | undefined;
+	favorite?: IFavorites | undefined;
+	setIsModalSave?: any;
 }
 
 export interface FavoritesProp {
@@ -55,6 +57,6 @@ export interface FavoriteElementProps {
 }
 
 export interface Params {
-	videolist: string; 
+	videolist: string;
 	maxResult: string | number;
 }

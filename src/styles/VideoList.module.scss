@@ -49,10 +49,20 @@ $hb: 32px;
 		}
 
 		.main__form_iconBtn {
-			position: absolute;
-			top: 187px;
-			left: 71%;
+			position: relative;
+			// top: 187px;
+			// left: 71%;
 			background-color: rgb(255, 255, 255);
+		}
+
+		.main__form_iconBtn::before {
+			content: '';
+			background: url('../assets/icon/Veс.svg') 0 0 no-repeat;
+			position: absolute;
+			width: 24px;
+			height: 24px;
+			top: -15px;
+			left: -32px;
 		}
 
 		.main__form_inputFocus {
@@ -81,18 +91,9 @@ $hb: 32px;
 			color: #FFFFFF;
 			font-size: 20px;
 			line-height: 24px;
-			position: relative;
+
 		}
 
-		.main__form_label button::before {
-			content: '';
-			background: url('../assets/icon/Veс.svg') 0 0 no-repeat;
-			position: absolute;
-			width: 24px;
-			height: 24px;
-			top: 15px;
-			left: -32px;
-		}
 	}
 }
 
@@ -223,6 +224,14 @@ $hb: 32px;
 		}
 	}
 }
+
+
+
+
+
+
+
+
 
 @media (max-width: 1439px) {
 	.main__form {

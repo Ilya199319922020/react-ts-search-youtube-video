@@ -49,13 +49,13 @@ const FavoriteElement: React.FC<FavoriteElementProps> = ({ favorite }) => {
 					/>
 				</ModalVideo>
 			}
-			<span
+			<div
 				className={styles.favoritesElement__text}
 			>
 				{
 					valueReq
 				}
-			</span>
+			</div>
 			<div
 				className={styles.favoritesElement__block}
 			>

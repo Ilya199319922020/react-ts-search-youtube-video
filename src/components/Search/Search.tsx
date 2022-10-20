@@ -7,10 +7,9 @@ import stylesList from '../../styles/VideoList.module.scss';
 import ModalVideo from '../Video/ModalVideo/ModalVideo';
 import ModalForm from '../AuxiliaryComponent/ModalForm';
 import { valuePropsModalForm } from '../../assets/valueProps/valueProps';
-import { SearchProps } from '../../TypeProps/TypeProps';
 import { useSearchParams } from 'react-router-dom';
 
-const Search: React.FC<SearchProps> = ({ }) => {
+const Search = ({ }) => {
 	const dispatch = useAppDispatch();
 	const { videoList } = useAppSelector(state => state.videoSlice);
 	const { isModal } = useAppSelector(state => state.favoritesSlice);
@@ -19,6 +18,7 @@ const Search: React.FC<SearchProps> = ({ }) => {
 	const { nameToken } = useAppSelector(state => state.authReducer);
 	const [isReq, setIsReq] = useState(false);
 	const [searchParams, setSearchParams] = useSearchParams();
+	const [isModalSave, setIsModalSave] = useState(false);
 
 	const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
@@ -51,7 +51,7 @@ const Search: React.FC<SearchProps> = ({ }) => {
 		}
 	}, [favorites])
 
-	const style = videoList.length  ? stylesList : styles;
+	const style = videoList.length ? stylesList : styles;
 
 	return (
 		<main
@@ -68,6 +68,8 @@ const Search: React.FC<SearchProps> = ({ }) => {
 				handleSubmitSearch={handleSubmitSearch}
 				onModalSave={onModalSave}
 				videoList={videoList}
+				setIsModalSave={setIsModalSave}
+				isModalSave={isModalSave}
 			>
 				Найти
 			</SearchForm>
@@ -77,6 +79,7 @@ const Search: React.FC<SearchProps> = ({ }) => {
 					<ModalForm
 						videoList={videoList}
 						valueField={searchField}
+						setIsModalSave={setIsModalSave}
 						{...valuePropsModalForm}
 					/>
 				</ModalVideo>
