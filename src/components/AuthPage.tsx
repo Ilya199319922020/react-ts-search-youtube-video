@@ -49,7 +49,7 @@ const AuthPage = () => {
 				dispatch(setAuth());
 				setIsSubmit(false);
 			} else {
-				dispatch(setAuth('Введен неверный логин или парооль'));
+				dispatch(setAuth('Введен неверный логин или пароль'));
 				setIsSubmit(false);
 			}
 		}
@@ -89,6 +89,16 @@ const AuthPage = () => {
 					value={loginPayload.login}
 					onChange={handleChange}
 				/>
+				{
+					error &&
+					<div
+					className={styles.error__auth}
+					>
+						{
+							error
+						}
+					</div>
+				}
 				<div className={styles.auth__form_passwordText}>
 					Пароль
 					<button

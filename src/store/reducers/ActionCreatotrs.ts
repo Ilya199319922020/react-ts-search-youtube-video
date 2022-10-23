@@ -4,6 +4,8 @@ import { AppDispatch } from "../store";
 import { authSlice } from './authSlice';
 import { IFavorites } from '../../models/Favorites';
 import { favoritesSlice } from './favoritesSlice';
+import { videoSlice } from './videoSlice';
+import { IVideoCard } from '../../models/VideoCard';
 
 export const setAuth = (error?: any) => async (dispatch: AppDispatch) => {
 	try {
@@ -25,20 +27,25 @@ export const removeAuth = () => async (dispatch: AppDispatch) => {
 	}
 };
 
-export const fetchListVideo = createAsyncThunk(
-	'search/video',
-	async ({ name, maxResult = 12 }: { name: string | undefined, maxResult?: number }, thunkApi) => {
-		try {
-			const response = await axios
-				.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAV9a9kZtwKibDxbD1xV0CkiDawpzYY8ww&maxResults=${maxResult}&q=${name}`);
-			const { items } = response.data;
-
-			return items;
-		} catch (e) {
-			return thunkApi.rejectWithValue('Не удалось загрузить данные')
-		}
+export const fetchVideo = ({ name, maxResult = 12 }: { name: string | undefined, maxResult?: number }) => async (dispatch: AppDispatch) => {
+	try {
+		const response = await axios
+			.get<any>(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAV9a9kZtwKibDxbD1xV0CkiDawpzYY8ww&maxResults=${maxResult}&q=${name}`)
+		const res = response.data.items;
+		dispatch(videoSlice.actions.fetchListVideo(res));
+	} catch (e: any) {
+		dispatch(videoSlice.actions.videoError(e.message));
 	}
-);
+};
+
+export const removeStateVideoList = () => async (dispatch: AppDispatch) => {
+	try {
+		dispatch(videoSlice.actions.removeStateVideo());
+		dispatch(favoritesSlice.actions.setSeachField(''));
+	} catch (e: any) {
+		dispatch(videoSlice.actions.videoError(e.message));
+	}
+};
 
 export const addReqValueFavorites = (objReq: IFavorites) => async (dispatch: AppDispatch) => {
 	try {
@@ -76,7 +83,7 @@ export const setValueCearchField = (str: string | any) => async (dispatch: AppDi
 	}
 };
 
-export const addNameToken = (str: string ) => async (dispatch: AppDispatch) => {
+export const addNameToken = (str: string) => async (dispatch: AppDispatch) => {
 	try {
 		dispatch(authSlice.actions.authAddNameToken(str));
 	}
@@ -85,7 +92,7 @@ export const addNameToken = (str: string ) => async (dispatch: AppDispatch) => {
 	}
 };
 
-export const addStoreLocalData= (data: IFavorites[] ) => async (dispatch: AppDispatch) => {
+export const addStoreLocalData = (data: IFavorites[]) => async (dispatch: AppDispatch) => {
 	try {
 		dispatch(favoritesSlice.actions.addStoreSaveLocal(data));
 	}
@@ -94,7 +101,7 @@ export const addStoreLocalData= (data: IFavorites[] ) => async (dispatch: AppDis
 	}
 };
 
-export const removeState= ( ) => async (dispatch: AppDispatch) => {
+export const removeState = () => async (dispatch: AppDispatch) => {
 	try {
 		dispatch(favoritesSlice.actions.removeStateFavorites());
 	}
@@ -104,4 +111,8 @@ export const removeState= ( ) => async (dispatch: AppDispatch) => {
 };
 
 
+
+function items(items: any): { payload: IVideoCard[]; type: string; } {
+	throw new Error('Function not implemented.');
+}
 

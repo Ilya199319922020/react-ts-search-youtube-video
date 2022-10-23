@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { valuePropsModalFormUpdate } from '../../../assets/valueProps/valueProps';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
-import { fetchListVideo, openCloseModal, setValueCearchField } from '../../../store/reducers/ActionCreatotrs';
+import { fetchVideo, openCloseModal, setValueCearchField } from '../../../store/reducers/ActionCreatotrs';
 import styles from '../../../styles/Favorites.module.scss';
 import { FavoriteElementProps } from '../../../TypeProps/TypeProps';
 import ModalForm from '../../AuxiliaryComponent/ModalForm';
@@ -25,7 +25,7 @@ const FavoriteElement: React.FC<FavoriteElementProps> = ({ favorite }) => {
 
 	useEffect(() => {
 		if (isExecuteReq) {
-			dispatch(fetchListVideo({ name: valueReq, maxResult: maxAmount }));
+			dispatch(fetchVideo({ name: valueReq, maxResult: maxAmount }));
 			dispatch(setValueCearchField(valueReq));
 			setIsExecuteReq(false);
 		}

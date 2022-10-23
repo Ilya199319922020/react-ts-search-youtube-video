@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect,  useState } from 'react';
 import { SearchForm } from '../AuxiliaryComponent/SearchForm';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { fetchListVideo, addReqValueFavorites, openCloseModal, setValueCearchField, addStoreLocalData } from '../../store/reducers/ActionCreatotrs';
+import { fetchVideo,  openCloseModal, setValueCearchField  } from '../../store/reducers/ActionCreatotrs';
 import styles from '../../styles/Search.module.scss';
 import stylesList from '../../styles/VideoList.module.scss';
 import ModalVideo from '../Video/ModalVideo/ModalVideo';
@@ -38,21 +38,30 @@ const Search = ({ }) => {
 
 	useEffect(() => {
 		if (isReq && searchField) {
-			dispatch(fetchListVideo({ name: searchField }));
+			dispatch(fetchVideo({ name: searchField }));
 			setIsReq(false);
 		}
 	}, [isReq]);
-	
+
 	useEffect(() => {
-		 if (favorites.length) {
+		if (favorites.length) {
 			localStorage.setItem(`${nameToken}`, JSON.stringify({ nameToken, favorites }))
 		}
 	}, [favorites]);
-	
+
 	useEffect(() => {
 		if (isModal) document.body.style.overflow = 'hidden';
 		else document.body.style.overflow = 'visible';
 	}, [isModal]);
+
+	useEffect(() => {
+		if (isModalSave) {
+			const setTimerModal = setTimeout(() => setIsModalSave(false), 3000);
+			return () => {
+				clearTimeout(setTimerModal);
+			}
+		}
+	}, [isModalSave]);
 
 	const style = videoList.length ? stylesList : styles;
 

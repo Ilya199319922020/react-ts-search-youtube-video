@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../../styles/Header.module.scss';
 import logo from '../../assets/icon/sibdev_logo.png';
 import { NavLink, Outlet } from 'react-router-dom';
-import { removeAuth, removeState } from '../../store/reducers/ActionCreatotrs';
+import { removeAuth, removeState, removeStateVideoList } from '../../store/reducers/ActionCreatotrs';
 import { useAppDispatch } from '../../hooks/redux';
 
 const Header = ({ }) => {
@@ -15,6 +15,7 @@ const Header = ({ }) => {
 		localStorage.removeItem('token');
 		dispatch(removeAuth());
 		dispatch(removeState());
+		dispatch(removeStateVideoList());
 	};
 
 	return (

@@ -29,8 +29,11 @@ $coltext: rgba(23, 23, 25, 0.3);
 	display: flex;
 }
 
-
-
+.error__auth {
+	color: red;
+	font-size: 10px;
+	padding-top: 3px
+}
 
 .auth {
 	max-width: 510px;

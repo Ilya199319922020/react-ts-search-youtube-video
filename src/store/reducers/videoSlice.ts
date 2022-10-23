@@ -1,7 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { IVideoCard } from '../../models/VideoCard';
-import { fetchListVideo } from './ActionCreatotrs';
 
 interface VideoList {
 	videoList: IVideoCard[];
@@ -19,14 +18,16 @@ export const videoSlice = createSlice({
 	name: 'video',
 	initialState,
 	reducers: {
-	},
-	extraReducers: {
-		[fetchListVideo.fulfilled.type]: (state, action:  PayloadAction<IVideoCard[]>) => {
-			state.videoList = action.payload
-
-			state.error = ''
+		fetchListVideo(state, action: PayloadAction<IVideoCard[]>) {
+			state.videoList = action.payload;
+			state.error = '';
 		},
-
+		removeStateVideo(state) {
+			state.videoList = [];
+		},
+		videoError(state, action: PayloadAction<string>) {
+			state.error = action.payload;
+		},
 	},
 });
 
