@@ -24,11 +24,13 @@ export const favoritesSlice = createSlice({
 		addReqValue(state, action: PayloadAction<IFavorites>) {
 			state.favorites = [...state.favorites, action.payload];
 		},
+		removeStateFavorites(state) {
+			state.favorites = [];
+		},
 		openModal(state, action: PayloadAction<boolean>) {
 			state.isModal = action.payload
 		},
 		updateReqValue(state, action: PayloadAction<IFavorites>) {
-
 			state.favorites = [...state.favorites
 				.map(element => {
 					if (element.id = action.payload.id) {
@@ -46,7 +48,6 @@ export const favoritesSlice = createSlice({
 		addStoreSaveLocal(state, action: PayloadAction<IFavorites[]>) {
 			state.favorites = action.payload
 		},
-	
 	},
 });
 

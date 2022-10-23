@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { SearchForm } from '../AuxiliaryComponent/SearchForm';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { fetchListVideo, addReqValueFavorites, openCloseModal, setValueCearchField } from '../../store/reducers/ActionCreatotrs';
+import { fetchListVideo, addReqValueFavorites, openCloseModal, setValueCearchField, addStoreLocalData } from '../../store/reducers/ActionCreatotrs';
 import styles from '../../styles/Search.module.scss';
 import stylesList from '../../styles/VideoList.module.scss';
 import ModalVideo from '../Video/ModalVideo/ModalVideo';
@@ -19,7 +19,7 @@ const Search = ({ }) => {
 	const [isReq, setIsReq] = useState(false);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [isModalSave, setIsModalSave] = useState(false);
-	
+
 	const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
 		const { value } = e.target;
@@ -42,15 +42,13 @@ const Search = ({ }) => {
 			setIsReq(false);
 		}
 	}, [isReq]);
-
+	
 	useEffect(() => {
-		const tokenLogin: any = localStorage.getItem(`${nameToken}`);
-		const objLoginToken = JSON.parse(tokenLogin)
-		if (favorites.length) {
-			localStorage.setItem(`${nameToken}`, JSON.stringify(favorites))
+		 if (favorites.length) {
+			localStorage.setItem(`${nameToken}`, JSON.stringify({ nameToken, favorites }))
 		}
 	}, [favorites]);
-
+	
 	useEffect(() => {
 		if (isModal) document.body.style.overflow = 'hidden';
 		else document.body.style.overflow = 'visible';

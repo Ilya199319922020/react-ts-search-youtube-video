@@ -7,8 +7,6 @@ import { createToken } from '../assets/secondaryFunctions/createToken';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { addNameToken, addStoreLocalData, setAuth } from '../store/reducers/ActionCreatotrs';
 import { Navigate } from 'react-router-dom';
-import off from '../assets/icon/f.png';
-import offActive from '../assets/icon/eye.png'
 
 const AuthPage = () => {
 	const dispatch = useAppDispatch();
@@ -16,6 +14,7 @@ const AuthPage = () => {
 	const [loginPayload, setLoginPayload] = useState<IUser>({
 		login: '', password: ''
 	});
+	const [sateToken, setSateToken] = useState<any>()
 	const [isSubmit, setIsSubmit] = useState(false);
 	const [isActivePass, setIsActivePass] = useState(false);
 
@@ -35,30 +34,37 @@ const AuthPage = () => {
 		}
 		setIsSubmit(true);
 	};
-	const u1: string = 'user1'
+
 	const token = localStorage.getItem("token");
-	const tokenLogin: any = localStorage.getItem(`${nameToken}`);
 
 	const verification = users
 		.some(u => u.login === loginPayload.login && u.password === loginPayload.password
 		);
 
 	useEffect(() => {
-		if (tokenLogin && tokenLogin[nameToken] === loginPayload.login) {
-			dispatch(addStoreLocalData(JSON.parse(tokenLogin)))
-		}
 		if (isSubmit && Object.keys(loginPayload).length !== 0) {
 			if (verification) {
 				const tokenCreate = createToken();
 				localStorage.setItem("token", tokenCreate);
-				dispatch(setAuth())
-				setIsSubmit(false)
+				dispatch(setAuth());
+				setIsSubmit(false);
 			} else {
-				dispatch(setAuth('Вееден неверный логин или парооль'))
-				setIsSubmit(false)
+				dispatch(setAuth('Введен неверный логин или парооль'));
+				setIsSubmit(false);
 			}
 		}
 	}, [isSubmit]);
+
+	useEffect(() => {
+		const tokenLogin: any = localStorage.getItem(`${nameToken}`)
+
+		if (isAuth && typeof tokenLogin !== 'undefined' && tokenLogin !== null) {
+			const objLoginToken = JSON.parse(tokenLogin);
+			if (objLoginToken.nameToken === loginPayload.login) {
+				dispatch(addStoreLocalData(objLoginToken.favorites));
+			}
+		}
+	}, [isAuth]);
 
 	if (token && isAuth) {
 		return <Navigate to='/search' />

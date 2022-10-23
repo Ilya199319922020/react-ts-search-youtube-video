@@ -94,3 +94,14 @@ export const addStoreLocalData= (data: IFavorites[] ) => async (dispatch: AppDis
 	}
 };
 
+export const removeState= ( ) => async (dispatch: AppDispatch) => {
+	try {
+		dispatch(favoritesSlice.actions.removeStateFavorites());
+	}
+	catch (e: any) {
+		dispatch(favoritesSlice.actions.favoritesError(e.message));
+	}
+};
+
+
+

@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import styles from '../../styles/Header.module.scss';
 import logo from '../../assets/icon/sibdev_logo.png';
-import { NavLink, Outlet} from 'react-router-dom';
-import { removeAuth } from '../../store/reducers/ActionCreatotrs';
+import { NavLink, Outlet } from 'react-router-dom';
+import { removeAuth, removeState } from '../../store/reducers/ActionCreatotrs';
 import { useAppDispatch } from '../../hooks/redux';
 
 const Header = ({ }) => {
 	const dispatch = useAppDispatch();
-	
+
 	const [isActiceBtn, setIsActiceBtn] = useState(true);
-		
+
 	const removeOnToken = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
 		localStorage.removeItem('token');
-		dispatch(removeAuth())
+		dispatch(removeAuth());
+		dispatch(removeState());
 	};
 
 	return (
