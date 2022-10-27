@@ -8,6 +8,7 @@ import ModalVideo from '../Video/ModalVideo/ModalVideo';
 import ModalForm from '../AuxiliaryComponent/ModalForm';
 import { valuePropsModalForm } from '../../assets/valueProps/valueProps';
 import { Navigate, useSearchParams } from 'react-router-dom';
+import RedirectComponent from '../../assets/hoc/RedirectComponent';
 
 const Search = ({ }) => {
 	const dispatch = useAppDispatch();
@@ -65,44 +66,40 @@ const Search = ({ }) => {
 
 	const style = videoList.length ? stylesList : styles;
 
-	const token = localStorage.getItem("token");
-
-	if (!token) {
-		return <Navigate to='/login' />
-	}
-	
 	return (
-		<main
-			className={style.main}
-		>
-			<h2
-				className={style.main__title}
+		<RedirectComponent>
+			<main
+				className={style.main}
 			>
-				Поиск видео
-			</h2>
-			<SearchForm
-				searchField={searchField}
-				handleChangeSearch={handleChangeSearch}
-				handleSubmitSearch={handleSubmitSearch}
-				onModalSave={onModalSave}
-				videoList={videoList}
-				setIsModalSave={setIsModalSave}
-				isModalSave={isModalSave}
-			>
-				Найти
-			</SearchForm>
-			{
-				isModal &&
-				<ModalVideo>
-					<ModalForm
-						videoList={videoList}
-						valueField={searchField}
-						setIsModalSave={setIsModalSave}
-						{...valuePropsModalForm}
-					/>
-				</ModalVideo>
-			}
-		</main>
+				<h2
+					className={style.main__title}
+				>
+					Поиск видео
+				</h2>
+				<SearchForm
+					searchField={searchField}
+					handleChangeSearch={handleChangeSearch}
+					handleSubmitSearch={handleSubmitSearch}
+					onModalSave={onModalSave}
+					videoList={videoList}
+					setIsModalSave={setIsModalSave}
+					isModalSave={isModalSave}
+				>
+					Найти
+				</SearchForm>
+				{
+					isModal &&
+					<ModalVideo>
+						<ModalForm
+							videoList={videoList}
+							valueField={searchField}
+							setIsModalSave={setIsModalSave}
+							{...valuePropsModalForm}
+						/>
+					</ModalVideo>
+				}
+			</main>
+		</RedirectComponent>
 	);
 };
 

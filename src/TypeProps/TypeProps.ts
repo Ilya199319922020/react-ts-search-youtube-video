@@ -51,6 +51,9 @@ export interface ModalFormProps {
 export interface FavoritesProp {
 
 }
+export interface RedirectProps {
+	children: ReactNode;
+}
 
 export interface FavoriteElementProps {
 	favorite: IFavorites

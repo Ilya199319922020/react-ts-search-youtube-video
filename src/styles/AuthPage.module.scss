@@ -75,6 +75,10 @@ $coltext: rgba(23, 23, 25, 0.3);
 			@extend %styleInput;
 		}
 
+		.auth__form_loginInput:focus {
+			border: 1px solid #1390E5;
+		}
+
 		.auth__form_passwordText {
 			position: relative;
 			@extend %styletext;
@@ -110,12 +114,14 @@ $coltext: rgba(23, 23, 25, 0.3);
 
 		.auth__form_passwordInput {
 			@extend %styleInput;
+		}
 
-
+		.auth__form_passwordInput:focus {
+			border: 1px solid #1390E5;
 		}
 
 		.auth__form_btn {
-			margin-top: 20px;
+			margin-top: 40px;
 			background: #1390E5;
 			border: 0px solid;
 			border-radius: 5px;
@@ -130,6 +136,8 @@ $coltext: rgba(23, 23, 25, 0.3);
 		.auth__form_btn:focus {
 			background: #0c68a5;
 		}
+
+		
 	}
 }
 
