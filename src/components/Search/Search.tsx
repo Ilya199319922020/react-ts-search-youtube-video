@@ -1,13 +1,13 @@
-import React, { useEffect,  useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SearchForm } from '../AuxiliaryComponent/SearchForm';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { fetchVideo,  openCloseModal, setValueCearchField  } from '../../store/reducers/ActionCreatotrs';
+import { fetchVideo, openCloseModal, setValueCearchField } from '../../store/reducers/ActionCreatotrs';
 import styles from '../../styles/Search.module.scss';
 import stylesList from '../../styles/VideoList.module.scss';
 import ModalVideo from '../Video/ModalVideo/ModalVideo';
 import ModalForm from '../AuxiliaryComponent/ModalForm';
 import { valuePropsModalForm } from '../../assets/valueProps/valueProps';
-import { useSearchParams } from 'react-router-dom';
+import { Navigate, useSearchParams } from 'react-router-dom';
 
 const Search = ({ }) => {
 	const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ const Search = ({ }) => {
 	const { isModal } = useAppSelector(state => state.favoritesSlice);
 	const { searchField } = useAppSelector(state => state.favoritesSlice);
 	const { favorites } = useAppSelector(state => state.favoritesSlice);
-	const { nameToken } = useAppSelector(state => state.authReducer);
+	const { nameToken, isAuth } = useAppSelector(state => state.authReducer);
 	const [isReq, setIsReq] = useState(false);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [isModalSave, setIsModalSave] = useState(false);
@@ -65,6 +65,12 @@ const Search = ({ }) => {
 
 	const style = videoList.length ? stylesList : styles;
 
+	const token = localStorage.getItem("token");
+
+	if (!token) {
+		return <Navigate to='/login' />
+	}
+	
 	return (
 		<main
 			className={style.main}

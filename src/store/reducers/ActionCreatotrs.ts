@@ -111,8 +111,3 @@ export const removeState = () => async (dispatch: AppDispatch) => {
 };
 
 
-
-function items(items: any): { payload: IVideoCard[]; type: string; } {
-	throw new Error('Function not implemented.');
-}
-
