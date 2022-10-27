@@ -24,7 +24,11 @@ export const SearchForm: React.FC<SearchFormProps> = ({
 				videoList.length > 0
 				&&
 				<button
-					className={style.main__form_iconBtn}
+					className={
+						isModalSave
+							? style.main__form_iconBtnActive
+							: style.main__form_iconBtn
+					}
 					onClick={onModalSave}
 				>
 					<span

@@ -7,7 +7,7 @@ import FavoriteElement from './FavoriteElement/FavoriteElement';
 
 const Favorites: React.FC<FavoritesProp> = ({ }) => {
 	const { favorites } = useAppSelector(state => state.favoritesSlice);
-
+	
 	return (
 		<RedirectComponent>
 			<div

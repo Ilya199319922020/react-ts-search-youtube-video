@@ -7,7 +7,7 @@ import stylesList from '../../styles/VideoList.module.scss';
 import ModalVideo from '../Video/ModalVideo/ModalVideo';
 import ModalForm from '../AuxiliaryComponent/ModalForm';
 import { valuePropsModalForm } from '../../assets/valueProps/valueProps';
-import { Navigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import RedirectComponent from '../../assets/hoc/RedirectComponent';
 
 const Search = ({ }) => {
@@ -51,13 +51,13 @@ const Search = ({ }) => {
 	}, [favorites]);
 
 	useEffect(() => {
-		if (isModal) document.body.style.overflow = 'hidden';
-		else document.body.style.overflow = 'visible';
+		if (isModal && valuePropsModalForm.btnName !== 'Изменить') document.body.style.overflow = 'hidden';
+		else if (valuePropsModalForm.btnName !== 'Изменить') document.body.style.overflow = 'visible';
 	}, [isModal]);
 
 	useEffect(() => {
 		if (isModalSave) {
-			const setTimerModal = setTimeout(() => setIsModalSave(false), 3000);
+			const setTimerModal = setTimeout(() => setIsModalSave(false), 4000);
 			return () => {
 				clearTimeout(setTimerModal);
 			}

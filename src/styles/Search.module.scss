@@ -7,7 +7,7 @@
 }
 
 .main {
-	margin-top: 80px;
+	margin-top: 0px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -37,14 +37,14 @@
 
 		}
 
-		.main__form_inputFocus {
+		.main__form_input:focus {
 			height: 52px;
 			width: 536px;
 			border-top: 1px solid #1390E5;
 			border-left: 1px solid #1390E5;
 			border-bottom: 1px solid #1390E5;
 			border-radius: 10px 0 0 10px;
-
+			background-color: rgba(197, 228, 249, 0.3);
 		}
 
 		.main__form_inputActive {
@@ -67,7 +67,12 @@
 			color: #FFFFFF;
 			font-size: 20px;
 			line-height: 24px;
-		}	
+
+		}
+
+		.main__form_label button:focus {
+			background: #0c68a5;
+		}
 
 	}
 }

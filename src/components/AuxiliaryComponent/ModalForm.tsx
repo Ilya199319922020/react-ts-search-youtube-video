@@ -14,10 +14,8 @@ const ModalForm: React.FC<ModalFormProps> = ({
 	const [isActiveSave, setIsActiveSave] = useState(false);
 
 	const currentId = favorites.length > 0
-		?
-		favorites[favorites.length - 1].id + 1
-		:
-		1;
+		? favorites[favorites.length - 1].id + 1
+		: 1;
 
 	const [formState, setFormState] = useState<IFavorites>({
 		id: favorite ? favorite.id : currentId,
