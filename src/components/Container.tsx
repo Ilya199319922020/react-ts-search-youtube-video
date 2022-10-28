@@ -7,12 +7,14 @@ import VideoList from './Video/VideoList';
 const Container = () => {
 	const { videoList } = useAppSelector(state => state.videoSlice);
 	const { searchField } = useAppSelector(state => state.favoritesSlice);
+
 	return (
 		<div
 			className={styles.container}
 		>
 			<Search />
-			{videoList.length > 0
+			{
+				videoList.length > 0
 				&&
 				<VideoList
 					videoList={videoList}

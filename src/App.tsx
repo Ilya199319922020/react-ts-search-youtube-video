@@ -12,7 +12,7 @@ function App() {
       <Route path='/' element={<Navigate replace to="/login" />} />
       <Route path='/login' element={<AuthPage />} />
       <Route path='/' element={<Header />}>
-        <Route path='search' element={<Container />} />
+        <Route path='search/*' element={<Container />} />
         <Route path='favorites' element={<Favorites />} />
       </Route>
     </Routes>

@@ -7,7 +7,7 @@ import stylesList from '../../styles/VideoList.module.scss';
 import ModalVideo from '../Video/ModalVideo/ModalVideo';
 import ModalForm from '../AuxiliaryComponent/ModalForm';
 import { valuePropsModalForm } from '../../assets/valueProps/valueProps';
-import { useSearchParams } from 'react-router-dom';
+import {  useSearchParams } from 'react-router-dom';
 import RedirectComponent from '../../assets/hoc/RedirectComponent';
 
 const Search = ({ }) => {
@@ -16,9 +16,10 @@ const Search = ({ }) => {
 	const { isModal } = useAppSelector(state => state.favoritesSlice);
 	const { searchField } = useAppSelector(state => state.favoritesSlice);
 	const { favorites } = useAppSelector(state => state.favoritesSlice);
-	const { nameToken, isAuth } = useAppSelector(state => state.authReducer);
+	const { nameToken } = useAppSelector(state => state.authReducer);
 	const [isReq, setIsReq] = useState(false);
 	const [searchParams, setSearchParams] = useSearchParams();
+	
 	const [isModalSave, setIsModalSave] = useState(false);
 
 	const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +44,11 @@ const Search = ({ }) => {
 			setIsReq(false);
 		}
 	}, [isReq]);
-
+	useEffect(() => {
+		if (!searchField) {
+			setSearchParams({});
+		}
+	}, [searchField]);
 	useEffect(() => {
 		if (favorites.length) {
 			localStorage.setItem(`${nameToken}`, JSON.stringify({ nameToken, favorites }))

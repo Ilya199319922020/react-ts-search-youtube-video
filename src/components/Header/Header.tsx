@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../../styles/Header.module.scss';
 import logo from '../../assets/icon/sibdev_logo.png';
-import { Navigate, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { Navigate, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { removeAuth, removeState, removeStateVideoList } from '../../store/reducers/ActionCreatotrs';
 import { useAppDispatch } from '../../hooks/redux';
 
@@ -9,7 +9,8 @@ const Header = ({ }) => {
 	const dispatch = useAppDispatch();
 	const [isActiceBtn, setIsActiceBtn] = useState(true);
 	const location = useLocation();
-
+	const navigate = useNavigate();
+	const goBack = () => navigate(-1)
 	const removeOnToken = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
 		localStorage.removeItem('token');
@@ -39,9 +40,12 @@ const Header = ({ }) => {
 					>
 						<img src={logo} width={'19.54px'} />
 					</div>
-					<NavLink
-						to='/search'
-						className={isActiceBtn ? styles.container__header_linkAactive : styles.container__header_link}
+					<div
+						className={
+							isActiceBtn
+								? styles.container__header_linkAactive
+								: styles.container__header_link
+						}
 					>
 						<button
 							className={
@@ -49,11 +53,11 @@ const Header = ({ }) => {
 									? styles.container__header_leftBtnaAactive
 									: styles.container__header_leftBtn
 							}
-							onClick={() => setIsActiceBtn(true)}
+							onClick={goBack}
 						>
 							Поиск
 						</button>
-					</NavLink>
+					</div>
 					<NavLink
 						to='/favorites'
 						className={!isActiceBtn

@@ -113,7 +113,6 @@ const AuthPage = () => {
 				<input
 					className={styles.auth__form_passwordInput}
 					type={!isActivePass ? "password" : "text"}
-					pattern="[0-9]*"
 					name="password"
 					value={loginPayload.password}
 					onChange={handleChange}
