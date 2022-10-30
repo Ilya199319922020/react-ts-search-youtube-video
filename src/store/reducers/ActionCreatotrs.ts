@@ -33,6 +33,7 @@ export const fetchVideo = ({ name, maxResult = 12 }: { name: string | undefined,
 			.get<any>(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAV9a9kZtwKibDxbD1xV0CkiDawpzYY8ww&maxResults=${maxResult}&q=${name}`)
 		const res = response.data.items;
 		dispatch(videoSlice.actions.fetchListVideo(res));
+		dispatch(videoSlice.actions.addTotalResults(response.data.pageInfo.totalResults));
 	} catch (e: any) {
 		dispatch(videoSlice.actions.videoError(e.message));
 	}

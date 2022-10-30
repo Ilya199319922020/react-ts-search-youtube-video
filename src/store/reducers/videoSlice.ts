@@ -6,12 +6,14 @@ interface VideoList {
 	videoList: IVideoCard[];
 	error: string;
 	maxResult: number;
+	totalResults: number | null,
 }
 
 const initialState: VideoList = {
 	videoList: [],
 	error: '',
 	maxResult: 12,
+	totalResults: null,
 };
 
 export const videoSlice = createSlice({
@@ -27,6 +29,9 @@ export const videoSlice = createSlice({
 		},
 		videoError(state, action: PayloadAction<string>) {
 			state.error = action.payload;
+		},
+		addTotalResults(state, action: PayloadAction<number>) {
+			state.totalResults = action.payload;
 		},
 	},
 });
