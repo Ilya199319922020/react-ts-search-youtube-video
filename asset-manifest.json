@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/react-ts-search-youtube-video/static/css/main.520c59f7.css",
-    "main.js": "/react-ts-search-youtube-video/static/js/main.fd08d1f0.js",
-    "static/media/eye-off.svg": "/react-ts-search-youtube-video/static/media/eye-off.432b3965a2098a94035c.svg",
-    "static/media/passActive.svg": "/react-ts-search-youtube-video/static/media/passActive.c867e1282527e49f8f1d.svg",
-    "static/media/H.svg": "/react-ts-search-youtube-video/static/media/H.1d4fddc2f260f74e5b22.svg",
-    "static/media/Veс.svg": "/react-ts-search-youtube-video/static/media/Veс.54d5975b8dc9887658a0.svg",
-    "static/media/list.svg": "/react-ts-search-youtube-video/static/media/list.18d8600beea27caed7eb.svg",
-    "static/media/listAct.svg": "/react-ts-search-youtube-video/static/media/listAct.ad96ee6d80e190af915b.svg",
-    "index.html": "/react-ts-search-youtube-video/index.html",
-    "static/media/grid.svg": "/react-ts-search-youtube-video/static/media/grid.e0eeffe12b4688fd8c17.svg",
-    "static/media/gridAct.svg": "/react-ts-search-youtube-video/static/media/gridAct.49e1b1134e58202dc124.svg",
-    "main.520c59f7.css.map": "/react-ts-search-youtube-video/static/css/main.520c59f7.css.map",
-    "main.fd08d1f0.js.map": "/react-ts-search-youtube-video/static/js/main.fd08d1f0.js.map"
+    "main.css": "/login/static/css/main.dd3ad637.css",
+    "main.js": "/login/static/js/main.fd08d1f0.js",
+    "static/media/eye-off.svg": "/login/static/media/eye-off.432b3965a2098a94035c.svg",
+    "static/media/passActive.svg": "/login/static/media/passActive.c867e1282527e49f8f1d.svg",
+    "static/media/H.svg": "/login/static/media/H.1d4fddc2f260f74e5b22.svg",
+    "static/media/Veс.svg": "/login/static/media/Veс.54d5975b8dc9887658a0.svg",
+    "static/media/list.svg": "/login/static/media/list.18d8600beea27caed7eb.svg",
+    "static/media/listAct.svg": "/login/static/media/listAct.ad96ee6d80e190af915b.svg",
+    "index.html": "/login/index.html",
+    "static/media/grid.svg": "/login/static/media/grid.e0eeffe12b4688fd8c17.svg",
+    "static/media/gridAct.svg": "/login/static/media/gridAct.49e1b1134e58202dc124.svg",
+    "main.dd3ad637.css.map": "/login/static/css/main.dd3ad637.css.map",
+    "main.fd08d1f0.js.map": "/login/static/js/main.fd08d1f0.js.map"
   },
   "entrypoints": [
-    "static/css/main.520c59f7.css",
+    "static/css/main.dd3ad637.css",
     "static/js/main.fd08d1f0.js"
   ]
 }
