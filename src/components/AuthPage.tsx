@@ -88,6 +88,7 @@ const AuthPage = () => {
 					name="login"
 					value={loginPayload.login}
 					onChange={handleChange}
+					placeholder={'логин: user1'}
 				/>
 				{
 					error &&
@@ -116,6 +117,7 @@ const AuthPage = () => {
 					name="password"
 					value={loginPayload.password}
 					onChange={handleChange}
+					placeholder={'пароль: 123123'}
 				/>
 
 				<button
