@@ -23,7 +23,6 @@ const AuthPage = () => {
 		);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		e.preventDefault();
 		const { name, value } = e.target;
 		setLoginPayload(prevState => ({ ...prevState, [name]: value }));
 	};
@@ -69,7 +68,10 @@ const AuthPage = () => {
 	}
 
 	return (
-		<div className={styles.auth}>
+		<div
+		className={styles.wrapper}
+		>
+<div className={styles.auth}>
 			<div className={styles.auth__logo}>
 				<img src={logo} />
 			</div>
@@ -126,6 +128,8 @@ const AuthPage = () => {
 				</button>
 			</form>
 		</div>
+		</div>
+		
 	)
 };
 
