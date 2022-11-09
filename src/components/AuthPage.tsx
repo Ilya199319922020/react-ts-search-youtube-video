@@ -11,12 +11,16 @@ import { Navigate } from 'react-router-dom';
 const AuthPage = () => {
 	const dispatch = useAppDispatch();
 	const { isAuth, error, nameToken } = useAppSelector(state => state.authReducer);
-	const [loginPayload, setLoginPayload] = useState<IUser>({
+	const [loginPayload, setLoginPayload] = useState<IUser>(() => ({
 		login: '', password: ''
-	});
-	const [sateToken, setSateToken] = useState<any>()
+	})
+	);
 	const [isSubmit, setIsSubmit] = useState(false);
 	const [isActivePass, setIsActivePass] = useState(false);
+	const token = localStorage.getItem("token");
+	const verification = users
+		.some(u => u.login === loginPayload.login && u.password === loginPayload.password
+		);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
@@ -34,12 +38,6 @@ const AuthPage = () => {
 		}
 		setIsSubmit(true);
 	};
-
-	const token = localStorage.getItem("token");
-
-	const verification = users
-		.some(u => u.login === loginPayload.login && u.password === loginPayload.password
-		);
 
 	useEffect(() => {
 		if (isSubmit && Object.keys(loginPayload).length !== 0) {
