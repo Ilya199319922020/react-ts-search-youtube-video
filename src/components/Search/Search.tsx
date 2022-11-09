@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { SearchForm } from '../AuxiliaryComponent/SearchForm';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchVideo, openCloseModal, setValueCearchField } from '../../store/reducers/ActionCreatotrs';
@@ -21,12 +21,11 @@ const Search = ({ }) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const [isModalSave, setIsModalSave] = useState(false);
-
+	
 	const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-		e.preventDefault();
 		const { value } = e.target;
 		dispatch(setValueCearchField(value));
-		setSearchParams({ videolist: value, maxResult: '12' })
+		setSearchParams({ videolist: value, maxResult: '12' });
 	};
 	const handleSubmitSearch = (e: React.MouseEvent<HTMLElement>) => {
 		e.preventDefault();
@@ -39,16 +38,14 @@ const Search = ({ }) => {
 	};
 
 	useEffect(() => {
+		if (!searchField) {
+			setSearchParams({});
+		}
 		if (isReq && searchField) {
 			dispatch(fetchVideo({ name: searchField }));
 			setIsReq(false);
 		}
-	}, [isReq]);
-	useEffect(() => {
-		if (!searchField) {
-			setSearchParams({});
-		}
-	}, [searchField]);
+	}, [searchField, isReq]);
 	useEffect(() => {
 		if (favorites.length) {
 			localStorage.setItem(`${nameToken}`, JSON.stringify({ nameToken, favorites }))
@@ -56,6 +53,7 @@ const Search = ({ }) => {
 	}, [favorites]);
 
 	useEffect(() => {
+
 		if (isModalSave) {
 			const setTimerModal = setTimeout(() => setIsModalSave(false), 4000);
 			return () => {
